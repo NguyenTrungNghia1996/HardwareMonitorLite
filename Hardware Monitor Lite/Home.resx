@@ -6014,6 +6014,16 @@
         AAAAAAAAAAAAAAAAAAAAAAAA
 </value>
   </data>
+  <data name="btnReload.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAQRJREFUWEftlSEOwkAQReuQSCQSiUQikUgkEolE4pAcAYlEIjkCR0AikVj4r3SS
+        hrA0wJA185KX0tLszs7OTosgCIIv6ciRXFaOZVc+06qubrTlRt4S7iXBAQEuHj996MuTZCKutnLLxFHy
+        30Wu5FXy3AVWbpMzeCq1M0kAlhG3ACztTQOSDVbuGkBPMhgpfldUFCE1cKg5lT8zkQTgWlCfsJYEMCzv
+        MmD7zynIApVNAPPyLgOsnAB25V0GqHxrMjSeJgiYYF23jME432c54EEC3rNG5L5lVgtIN6wHQv+vd8Gt
+        /AtMai05pVv7TcF3gdVyPKkNtoWuR7949UkOgiB4Q1HcAXT5SMf6M29IAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="serialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>201, 17</value>
   </metadata>

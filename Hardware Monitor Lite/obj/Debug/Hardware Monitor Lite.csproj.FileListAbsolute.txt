@@ -15,3 +15,19 @@ C:\Users\nghia\Desktop\New folder\Hardware Monitor Lite\Hardware Monitor Lite\ob
 C:\Users\nghia\Desktop\New folder\Hardware Monitor Lite\Hardware Monitor Lite\bin\Debug\Newtonsoft.Json.dll
 C:\Users\nghia\Desktop\New folder\Hardware Monitor Lite\Hardware Monitor Lite\bin\Debug\Newtonsoft.Json.xml
 C:\Users\nghia\Desktop\New folder\Hardware Monitor Lite\Hardware Monitor Lite\obj\Debug\Hardware_Monitor_Lite.About.resources
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Hardware Monitor Lite.exe.config
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Hardware Monitor Lite.exe
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Hardware Monitor Lite.pdb
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Newtonsoft.Json.dll
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\HidSharp.dll
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\LibreHardwareMonitorLib.pdb
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Newtonsoft.Json.xml
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csprojAssemblyReference.cache
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware_Monitor_Lite.About.resources
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware_Monitor_Lite.Home.resources
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware_Monitor_Lite.Properties.Resources.resources
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.GenerateResource.cache
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.CoreCompileInputs.cache
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.CopyComplete
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.exe
+D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.pdb

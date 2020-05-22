@@ -78,16 +78,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.AppIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbbCom = new System.Windows.Forms.ComboBox();
             this.ckAutoWired = new System.Windows.Forms.CheckBox();
             this.lblStatusWired = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.btnWired = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
-            this.cbbCom = new System.Windows.Forms.ComboBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ckMini = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReload = new System.Windows.Forms.Button();
             this.grCPU.SuspendLayout();
             this.grGPU.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -581,6 +582,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnReload);
             this.groupBox4.Controls.Add(this.cbbCom);
             this.groupBox4.Controls.Add(this.ckAutoWired);
             this.groupBox4.Controls.Add(this.lblStatusWired);
@@ -594,6 +596,14 @@
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Wired Connection";
+            // 
+            // cbbCom
+            // 
+            this.cbbCom.FormattingEnabled = true;
+            this.cbbCom.Location = new System.Drawing.Point(78, 28);
+            this.cbbCom.Name = "cbbCom";
+            this.cbbCom.Size = new System.Drawing.Size(166, 33);
+            this.cbbCom.TabIndex = 10;
             // 
             // ckAutoWired
             // 
@@ -630,9 +640,9 @@
             // btnWired
             // 
             this.btnWired.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWired.Location = new System.Drawing.Point(267, 29);
+            this.btnWired.Location = new System.Drawing.Point(289, 29);
             this.btnWired.Name = "btnWired";
-            this.btnWired.Size = new System.Drawing.Size(141, 33);
+            this.btnWired.Size = new System.Drawing.Size(119, 33);
             this.btnWired.TabIndex = 5;
             this.btnWired.Text = "Connect";
             this.btnWired.UseVisualStyleBackColor = true;
@@ -647,14 +657,6 @@
             this.label20.Size = new System.Drawing.Size(51, 21);
             this.label20.TabIndex = 3;
             this.label20.Text = "PORT:";
-            // 
-            // cbbCom
-            // 
-            this.cbbCom.FormattingEnabled = true;
-            this.cbbCom.Location = new System.Drawing.Point(78, 28);
-            this.cbbCom.Name = "cbbCom";
-            this.cbbCom.Size = new System.Drawing.Size(183, 33);
-            this.cbbCom.TabIndex = 10;
             // 
             // menuStrip1
             // 
@@ -678,9 +680,20 @@
             // 
             this.ckMini.CheckOnClick = true;
             this.ckMini.Name = "ckMini";
-            this.ckMini.Size = new System.Drawing.Size(180, 22);
+            this.ckMini.Size = new System.Drawing.Size(150, 22);
             this.ckMini.Text = "Start Minimize";
             this.ckMini.CheckedChanged += new System.EventHandler(this.ckMini_CheckedChanged);
+            // 
+            // btnReload
+            // 
+            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
+            this.btnReload.Location = new System.Drawing.Point(250, 29);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(33, 33);
+            this.btnReload.TabIndex = 11;
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
             // Home
             // 
@@ -789,6 +802,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ckMini;
+        private System.Windows.Forms.Button btnReload;
     }
 }
 

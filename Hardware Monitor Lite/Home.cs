@@ -26,40 +26,6 @@ namespace Hardware_Monitor_Lite
         float ramLoad = 0, ramUse = 0, totalRam = 0;
         float upload = 0, download = 0;
         float hddUse, hddLoad, hddTemp, ssdUse, ssdLoad, ssdTemp;
-
-        private void btnWired_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!serialPort1.IsOpen)
-                {
-                    serialPort1.PortName = cbbCom.Text;
-                    Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                    _config.AppSettings.Settings["port"].Value = cbbCom.Text;
-                    _config.Save();
-                    serialPort1.Open();
-                    btnWired.Text = "Disconnect";
-                    btnWired.ForeColor = Color.Red;
-                    lblStatusWired.Text = "Connected";
-                    lblStatusWired.ForeColor = Color.Green;
-                    AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
-                }
-                else
-                {
-                    serialPort1.Close();
-                    btnWired.Text = "Connect";
-                    btnWired.ForeColor = Color.Black;
-                    lblStatusWired.Text = "Disconnect";
-                    lblStatusWired.ForeColor = Color.Red;
-                    AppIcon.ShowBalloonTip(5000, "Đã ngắt kết nối ", "Disconnected", ToolTipIcon.Warning);
-                }
-            }
-            catch
-            {
-                AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy PORT", ToolTipIcon.Warning);
-            }
-
-        }
         public class Processor
         {
             public string Name { get; set; }
@@ -80,6 +46,9 @@ namespace Hardware_Monitor_Lite
         {
             public string Speed { get; set; }
         }
+
+        
+
         public class HDD
         {
             public string Name { get; set; }
@@ -173,6 +142,8 @@ namespace Hardware_Monitor_Lite
                             lblStatusWired.Text = "Connected";
                             lblStatusWired.ForeColor = Color.Green;
                             AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
+                            cbbCom.Enabled = false;
+                            btnReload.Enabled = false;
                         }
                     }
                     catch
@@ -182,6 +153,8 @@ namespace Hardware_Monitor_Lite
                         btnWired.ForeColor = Color.Black;
                         lblStatusWired.Text = "Disconnected";
                         lblStatusWired.ForeColor = Color.Red;
+                        cbbCom.Enabled = true;
+                        btnReload.Enabled = true;
                     }
                 }
 
@@ -250,7 +223,7 @@ namespace Hardware_Monitor_Lite
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            cbbCom.DataSource = SerialPort.GetPortNames();
+           
 
             foreach (var hardware in thisComputer.Hardware)
             {
@@ -489,6 +462,11 @@ namespace Hardware_Monitor_Lite
                     client = new TcpClient();
                 }
             }
+            if (lblStatusWired.Text == "Connected")
+            {
+                byte[] data = Encoding.ASCII.GetBytes(obj + "\r\n");
+                serialPort1.Write(obj + "\r\n");
+            }
         }
         private void btnConnectWIFI_Click(object sender, EventArgs e)
         {
@@ -541,6 +519,44 @@ namespace Hardware_Monitor_Lite
             }
             btnConnectWIFI.Enabled = true;
         }
+        private void btnWired_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!serialPort1.IsOpen)
+                {
+                    serialPort1.PortName = cbbCom.Text;
+                    Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                    _config.AppSettings.Settings["port"].Value = cbbCom.Text;
+                    _config.Save();
+                    serialPort1.Open();
+                    btnWired.Text = "Disconnect";
+                    btnWired.ForeColor = Color.Red;
+                    lblStatusWired.Text = "Connected";
+                    lblStatusWired.ForeColor = Color.Green;
+                    AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
+                    cbbCom.Enabled = false;
+                    btnReload.Enabled = false;
+                }
+                else
+                {
+                    serialPort1.Close();
+                    btnWired.Text = "Connect";
+                    btnWired.ForeColor = Color.Black;
+                    lblStatusWired.Text = "Disconnect";
+                    lblStatusWired.ForeColor = Color.Red;
+                    AppIcon.ShowBalloonTip(5000, "Đã ngắt kết nối ", "Disconnected", ToolTipIcon.Warning);
+                    cbbCom.Enabled = true;
+                    btnReload.Enabled = true;
+                }
+            }
+            catch
+            {
+                AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy PORT", ToolTipIcon.Warning);
+                cbbCom.Enabled = true;
+            }
+
+        }
         private void ckAutoWifi_CheckedChanged(object sender, EventArgs e)
         {
             Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -589,6 +605,10 @@ namespace Hardware_Monitor_Lite
             Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             _config.AppSettings.Settings["state"].Value = ckMini.Checked.ToString();
             _config.Save();
+        }
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            cbbCom.DataSource = SerialPort.GetPortNames();
         }
     }
 }
