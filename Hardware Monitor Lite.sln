@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hardware Monitor Lite", "Hardware Monitor Lite\Hardware Monitor Lite.csproj", "{7A9468DA-4AD1-4A0B-BABB-9AE454BBAC03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A9468DA-4AD1-4A0B-BABB-9AE454BBAC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A9468DA-4AD1-4A0B-BABB-9AE454BBAC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A9468DA-4AD1-4A0B-BABB-9AE454BBAC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A9468DA-4AD1-4A0B-BABB-9AE454BBAC03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F322C410-3560-4857-B908-D628F03AA280}
+	EndGlobalSection
+EndGlobal
