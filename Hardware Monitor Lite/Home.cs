@@ -337,7 +337,7 @@ namespace Hardware_Monitor_Lite
                 {
                     foreach (var sensor in hardware.Sensors)
                     {
-                        ssd = hardware.Name;
+                        ssd = hardware.Name.Substring(0, 19);
                         if (sensor.SensorType == SensorType.Load && sensor.Name == "Total Activity")
                         {
                             ssdLoad = sensor.Value.Value;
