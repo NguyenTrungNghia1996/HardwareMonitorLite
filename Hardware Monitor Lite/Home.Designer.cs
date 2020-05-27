@@ -78,6 +78,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.AppIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnReload = new System.Windows.Forms.Button();
             this.cbbCom = new System.Windows.Forms.ComboBox();
             this.ckAutoWired = new System.Windows.Forms.CheckBox();
             this.lblStatusWired = new System.Windows.Forms.Label();
@@ -88,7 +89,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ckMini = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReload = new System.Windows.Forms.Button();
+            this.ckStartup = new System.Windows.Forms.ToolStripMenuItem();
             this.grCPU.SuspendLayout();
             this.grGPU.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -597,6 +598,17 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Wired Connection";
             // 
+            // btnReload
+            // 
+            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
+            this.btnReload.Location = new System.Drawing.Point(250, 29);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(33, 33);
+            this.btnReload.TabIndex = 11;
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
             // cbbCom
             // 
             this.cbbCom.FormattingEnabled = true;
@@ -671,7 +683,8 @@
             // settingToolStripMenuItem
             // 
             this.settingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ckMini});
+            this.ckMini,
+            this.ckStartup});
             this.settingToolStripMenuItem.Name = "settingToolStripMenuItem";
             this.settingToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.settingToolStripMenuItem.Text = "Setting";
@@ -680,20 +693,17 @@
             // 
             this.ckMini.CheckOnClick = true;
             this.ckMini.Name = "ckMini";
-            this.ckMini.Size = new System.Drawing.Size(150, 22);
+            this.ckMini.Size = new System.Drawing.Size(180, 22);
             this.ckMini.Text = "Start Minimize";
             this.ckMini.CheckedChanged += new System.EventHandler(this.ckMini_CheckedChanged);
             // 
-            // btnReload
+            // ckStartup
             // 
-            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(250, 29);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(33, 33);
-            this.btnReload.TabIndex = 11;
-            this.btnReload.UseVisualStyleBackColor = true;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            this.ckStartup.CheckOnClick = true;
+            this.ckStartup.Name = "ckStartup";
+            this.ckStartup.Size = new System.Drawing.Size(180, 22);
+            this.ckStartup.Text = "Startup windows";
+            this.ckStartup.CheckedChanged += new System.EventHandler(this.ckStartup_CheckedChanged);
             // 
             // Home
             // 
@@ -803,6 +813,7 @@
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ckMini;
         private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.ToolStripMenuItem ckStartup;
     }
 }
 

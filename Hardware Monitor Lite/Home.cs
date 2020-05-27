@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using LibreHardwareMonitor.Hardware;
 using Newtonsoft.Json;
 using System.IO.Ports;
+using Microsoft.Win32.TaskScheduler;
 
 namespace Hardware_Monitor_Lite
 {
@@ -46,9 +47,6 @@ namespace Hardware_Monitor_Lite
         {
             public string Speed { get; set; }
         }
-
-        
-
         public class HDD
         {
             public string Name { get; set; }
@@ -56,6 +54,7 @@ namespace Hardware_Monitor_Lite
             public double Temp { get; set; }
             public double Load { get; set; }
         }
+
         public class SSD
         {
             public string Name { get; set; }
@@ -72,7 +71,6 @@ namespace Hardware_Monitor_Lite
             public HDD hddDrive { get; set; }
             public SSD ssdDrive { get; set; }
         }
-
 
         public Home()
         {
@@ -115,6 +113,15 @@ namespace Hardware_Monitor_Lite
                 base.ShowInTaskbar = true;
                 ckMini.CheckState = CheckState.Unchecked;
             }
+            if (ConfigurationManager.AppSettings["startTray"].ToString().ToLower().Equals("true"))
+            {
+                ckStartup.CheckState = CheckState.Checked;
+            }
+            else
+            {
+                ckStartup.CheckState = CheckState.Unchecked;
+            }
+
             serialPort1.BaudRate = 115200;
             serialPort1.Parity = Parity.None;
             serialPort1.StopBits = StopBits.One;
@@ -605,6 +612,31 @@ namespace Hardware_Monitor_Lite
             Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             _config.AppSettings.Settings["state"].Value = ckMini.Checked.ToString();
             _config.Save();
+        }
+        private void ckStartup_CheckedChanged(object sender, EventArgs e)
+        {
+            Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            _config.AppSettings.Settings["startTray"].Value = ckStartup.Checked.ToString();
+            _config.Save();
+            using (TaskService ts = new TaskService())
+            {
+                TaskDefinition td = ts.NewTask();
+                td.RegistrationInfo.Description = "HardwareMonitorLite";
+                td.Principal.RunLevel = TaskRunLevel.Highest;
+                td.Triggers.AddNew(TaskTriggerType.Logon);
+                td.Actions.Add(new ExecAction(Application.ExecutablePath, null));
+                if (ckStartup.Checked == true)
+                {
+                    ts.RootFolder.RegisterTaskDefinition("HardwareMonitorLite", td);
+                    AppIcon.ShowBalloonTip(500, "Khởi động cùng windows !", "Start with windows ! ", ToolTipIcon.Info);
+                }
+                else {
+                    ts.RootFolder.DeleteTask("HardwareMonitorLite");
+                    AppIcon.ShowBalloonTip(500, "Không khởi động cùng windows!", "Does not start with windows ! ", ToolTipIcon.Info);
+                }
+            }
+
+
         }
         private void btnReload_Click(object sender, EventArgs e)
         {
