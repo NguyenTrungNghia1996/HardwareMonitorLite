@@ -27,6 +27,7 @@ namespace Hardware_Monitor_Lite
         float ramLoad = 0, ramUse = 0, totalRam = 0;
         float upload = 0, download = 0;
         float hddUse, hddLoad, hddTemp, ssdUse, ssdLoad, ssdTemp;
+        string a;
         public class Processor
         {
             public string Name { get; set; }
@@ -122,7 +123,7 @@ namespace Hardware_Monitor_Lite
                 ckStartup.CheckState = CheckState.Unchecked;
             }
 
-            serialPort1.BaudRate = 115200;
+            serialPort1.BaudRate = 9600;
             serialPort1.Parity = Parity.None;
             serialPort1.StopBits = StopBits.One;
             serialPort1.DataBits = 8;
@@ -471,8 +472,8 @@ namespace Hardware_Monitor_Lite
             }
             if (lblStatusWired.Text == "Connected")
             {
-                byte[] data = Encoding.ASCII.GetBytes(obj + "\r\n");
-                serialPort1.Write(obj + "\r\n");
+                a = dataCPU.Name + "," + dataCPU.Load+","+dataCPU.Temp+","+dataGPU.Name+","+dataGPU.Load+","+dataGPU.Temp+","+dataRam.Use+","+dataNet.Speed+","+infoHDD.Name+","+infoHDD.Use+","+infoHDD.Load+","+infoHDD.Temp+ "," + infoSSD.Name + "," + infoSSD.Use + "," + infoSSD.Load + "," + infoSSD.Temp+"*";
+                serialPort1.Write(a);
             }
         }
         private void btnConnectWIFI_Click(object sender, EventArgs e)

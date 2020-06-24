@@ -103,6 +103,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // grCPU
@@ -693,7 +694,7 @@
             // 
             this.ckMini.CheckOnClick = true;
             this.ckMini.Name = "ckMini";
-            this.ckMini.Size = new System.Drawing.Size(180, 22);
+            this.ckMini.Size = new System.Drawing.Size(162, 22);
             this.ckMini.Text = "Start Minimize";
             this.ckMini.CheckedChanged += new System.EventHandler(this.ckMini_CheckedChanged);
             // 
@@ -701,7 +702,7 @@
             // 
             this.ckStartup.CheckOnClick = true;
             this.ckStartup.Name = "ckStartup";
-            this.ckStartup.Size = new System.Drawing.Size(180, 22);
+            this.ckStartup.Size = new System.Drawing.Size(162, 22);
             this.ckStartup.Text = "Startup windows";
             this.ckStartup.CheckedChanged += new System.EventHandler(this.ckStartup_CheckedChanged);
             // 
