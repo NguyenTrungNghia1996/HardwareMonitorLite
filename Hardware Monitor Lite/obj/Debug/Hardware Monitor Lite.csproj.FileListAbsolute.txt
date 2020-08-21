@@ -31,7 +31,6 @@ D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor L
 D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.CopyComplete
 D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.exe
 D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.pdb
-D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Microsoft.Win32.TaskScheduler.dll
 D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Microsoft.Win32.TaskScheduler.xml
 D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\de\Microsoft.Win32.TaskScheduler.resources.dll
 D:\GITHUB\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\es\Microsoft.Win32.TaskScheduler.resources.dll
