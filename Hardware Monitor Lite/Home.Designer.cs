@@ -55,20 +55,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtDown = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.grHDD = new System.Windows.Forms.GroupBox();
-            this.txtHddTemp = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtHddLoad = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtHddUse = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.grSSD = new System.Windows.Forms.GroupBox();
-            this.txtSsdTemp = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtSsdLoad = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txtSsdUse = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ckAutoWifi = new System.Windows.Forms.CheckBox();
             this.lblWIFIStatus = new System.Windows.Forms.Label();
@@ -94,8 +80,6 @@
             this.grGPU.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.grHDD.SuspendLayout();
-            this.grSSD.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -354,150 +338,6 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "Download:";
             // 
-            // grHDD
-            // 
-            this.grHDD.Controls.Add(this.txtHddTemp);
-            this.grHDD.Controls.Add(this.label18);
-            this.grHDD.Controls.Add(this.txtHddLoad);
-            this.grHDD.Controls.Add(this.label10);
-            this.grHDD.Controls.Add(this.txtHddUse);
-            this.grHDD.Controls.Add(this.label15);
-            this.grHDD.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grHDD.Location = new System.Drawing.Point(12, 133);
-            this.grHDD.Name = "grHDD";
-            this.grHDD.Size = new System.Drawing.Size(428, 100);
-            this.grHDD.TabIndex = 11;
-            this.grHDD.TabStop = false;
-            // 
-            // txtHddTemp
-            // 
-            this.txtHddTemp.AutoSize = true;
-            this.txtHddTemp.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHddTemp.Location = new System.Drawing.Point(138, 71);
-            this.txtHddTemp.Name = "txtHddTemp";
-            this.txtHddTemp.Size = new System.Drawing.Size(0, 21);
-            this.txtHddTemp.TabIndex = 6;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(6, 71);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(100, 21);
-            this.label18.TabIndex = 5;
-            this.label18.Text = "Temperature:";
-            // 
-            // txtHddLoad
-            // 
-            this.txtHddLoad.AutoSize = true;
-            this.txtHddLoad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHddLoad.Location = new System.Drawing.Point(138, 50);
-            this.txtHddLoad.Name = "txtHddLoad";
-            this.txtHddLoad.Size = new System.Drawing.Size(0, 21);
-            this.txtHddLoad.TabIndex = 4;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 50);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 21);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Total Activity:";
-            // 
-            // txtHddUse
-            // 
-            this.txtHddUse.AutoSize = true;
-            this.txtHddUse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHddUse.Location = new System.Drawing.Point(138, 29);
-            this.txtHddUse.Name = "txtHddUse";
-            this.txtHddUse.Size = new System.Drawing.Size(0, 21);
-            this.txtHddUse.TabIndex = 2;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(7, 29);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(93, 21);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Used Space:";
-            // 
-            // grSSD
-            // 
-            this.grSSD.Controls.Add(this.txtSsdTemp);
-            this.grSSD.Controls.Add(this.label12);
-            this.grSSD.Controls.Add(this.txtSsdLoad);
-            this.grSSD.Controls.Add(this.label19);
-            this.grSSD.Controls.Add(this.txtSsdUse);
-            this.grSSD.Controls.Add(this.label21);
-            this.grSSD.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grSSD.Location = new System.Drawing.Point(446, 133);
-            this.grSSD.Name = "grSSD";
-            this.grSSD.Size = new System.Drawing.Size(428, 100);
-            this.grSSD.TabIndex = 12;
-            this.grSSD.TabStop = false;
-            // 
-            // txtSsdTemp
-            // 
-            this.txtSsdTemp.AutoSize = true;
-            this.txtSsdTemp.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSsdTemp.Location = new System.Drawing.Point(152, 71);
-            this.txtSsdTemp.Name = "txtSsdTemp";
-            this.txtSsdTemp.Size = new System.Drawing.Size(0, 21);
-            this.txtSsdTemp.TabIndex = 6;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(6, 71);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 21);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Temperature:";
-            // 
-            // txtSsdLoad
-            // 
-            this.txtSsdLoad.AutoSize = true;
-            this.txtSsdLoad.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSsdLoad.Location = new System.Drawing.Point(152, 50);
-            this.txtSsdLoad.Name = "txtSsdLoad";
-            this.txtSsdLoad.Size = new System.Drawing.Size(0, 21);
-            this.txtSsdLoad.TabIndex = 4;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(6, 50);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(100, 21);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "Total Activity:";
-            // 
-            // txtSsdUse
-            // 
-            this.txtSsdUse.AutoSize = true;
-            this.txtSsdUse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSsdUse.Location = new System.Drawing.Point(152, 29);
-            this.txtSsdUse.Name = "txtSsdUse";
-            this.txtSsdUse.Size = new System.Drawing.Size(0, 21);
-            this.txtSsdUse.TabIndex = 2;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(7, 29);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(93, 21);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Used Space:";
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.ckAutoWifi);
@@ -507,7 +347,7 @@
             this.groupBox3.Controls.Add(this.txtIP);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 239);
+            this.groupBox3.Location = new System.Drawing.Point(12, 133);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(428, 100);
             this.groupBox3.TabIndex = 13;
@@ -592,7 +432,7 @@
             this.groupBox4.Controls.Add(this.btnWired);
             this.groupBox4.Controls.Add(this.label20);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(446, 239);
+            this.groupBox4.Location = new System.Drawing.Point(446, 133);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(428, 100);
             this.groupBox4.TabIndex = 14;
@@ -677,7 +517,7 @@
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(881, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -711,11 +551,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(881, 348);
+            this.ClientSize = new System.Drawing.Size(884, 246);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.grSSD);
-            this.Controls.Add(this.grHDD);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grGPU);
@@ -724,11 +562,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(897, 387);
-            this.MinimumSize = new System.Drawing.Size(897, 387);
+            this.MaximumSize = new System.Drawing.Size(900, 285);
+            this.MinimumSize = new System.Drawing.Size(900, 285);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hardware Monitor Lite";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Resize += new System.EventHandler(this.Home_Resize);
             this.grCPU.ResumeLayout(false);
             this.grCPU.PerformLayout();
@@ -738,10 +577,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.grHDD.ResumeLayout(false);
-            this.grHDD.PerformLayout();
-            this.grSSD.ResumeLayout(false);
-            this.grSSD.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -780,20 +615,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label txtDown;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.GroupBox grHDD;
-        private System.Windows.Forms.Label txtHddLoad;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label txtHddUse;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label txtHddTemp;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.GroupBox grSSD;
-        private System.Windows.Forms.Label txtSsdTemp;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label txtSsdLoad;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label txtSsdUse;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lblWIFIStatus;
         private System.Windows.Forms.Label label7;

@@ -21,12 +21,11 @@ namespace Hardware_Monitor_Lite
     {
         readonly private Computer thisComputer = new Computer();
         public TcpClient client = new TcpClient();
-        string cpuName = "", gpuName = "", strNw = "",hdd,ssd;
+        string cpuName = "", gpuName = "", strNw = "";
         float cpuLoad = 0, cpuTemp = 0;
         float gpuLoad = 0, gpuTemp = 0, gpuFan = 0, gpuFanLoad = 0;
         float ramLoad = 0, ramUse = 0, totalRam = 0;
         float upload = 0, download = 0;
-        float hddUse, hddLoad, hddTemp, ssdUse, ssdLoad, ssdTemp;
         string a;
         public class Processor
         {
@@ -48,29 +47,12 @@ namespace Hardware_Monitor_Lite
         {
             public string Speed { get; set; }
         }
-        public class HDD
-        {
-            public string Name { get; set; }
-            public double Use { get; set; }
-            public double Temp { get; set; }
-            public double Load { get; set; }
-        }
-
-        public class SSD
-        {
-            public string Name { get; set; }
-            public double Use { get; set; }
-            public double Temp { get; set; }
-            public double Load { get; set; }
-        }
         public class Infomation
         {
             public Processor CPU { get; set; }
             public Graphic GPU { get; set; }
             public Ram RAM { get; set; }
             public Connection Net { get; set; }
-            public HDD hddDrive { get; set; }
-            public SSD ssdDrive { get; set; }
         }
 
         public Home()
@@ -321,61 +303,61 @@ namespace Hardware_Monitor_Lite
                     }
                 }
                 /*---------------------------------Drive---------------------------------*/
-                if (hardware.Name == "WDC WD10EZEX-00WN4A0")
-                {
-                    foreach (var sensor in hardware.Sensors)
-                    {
-                        hdd = hardware.Name;
-                        if (sensor.SensorType == SensorType.Load && sensor.Name == "Total Activity")
-                        {
-                            hddLoad = sensor.Value.Value;
-                        }
-                        if (sensor.SensorType == SensorType.Temperature && sensor.Name == "Temperature")
-                        {
-                            hddTemp = sensor.Value.GetValueOrDefault();
-                        }
-                        if (sensor.SensorType == SensorType.Load && sensor.Name == "Used Space")
-                        {
-                            hddUse = sensor.Value.GetValueOrDefault();
-                        }
-                    }
-                }
+                //if (hardware.Name == "WDC WD10EZEX-00WN4A0")
+                //{
+                //    foreach (var sensor in hardware.Sensors)
+                //    {
+                //        hdd = hardware.Name;
+                //        if (sensor.SensorType == SensorType.Load && sensor.Name == "Total Activity")
+                //        {
+                //            hddLoad = sensor.Value.Value;
+                //        }
+                //        if (sensor.SensorType == SensorType.Temperature && sensor.Name == "Temperature")
+                //        {
+                //            hddTemp = sensor.Value.GetValueOrDefault();
+                //        }
+                //        if (sensor.SensorType == SensorType.Load && sensor.Name == "Used Space")
+                //        {
+                //            hddUse = sensor.Value.GetValueOrDefault();
+                //        }
+                //    }
+                //}
 
-                if (hardware.Name == "Samsung SSD 960 EVO 250GB")
-                {
-                    foreach (var sensor in hardware.Sensors)
-                    {
-                        ssd = hardware.Name.Substring(0, 19);
-                        if (sensor.SensorType == SensorType.Load && sensor.Name == "Total Activity")
-                        {
-                            ssdLoad = sensor.Value.Value;
-                        }
-                        if (sensor.SensorType == SensorType.Temperature && sensor.Name == "Temperature")
-                        {
-                            ssdTemp = sensor.Value.GetValueOrDefault();
-                        }
-                        if (sensor.SensorType == SensorType.Load && sensor.Name == "Used Space")
-                        {
-                            ssdUse = sensor.Value.GetValueOrDefault();
-                        }
-                    }
-                }
+                //if (hardware.Name == "Samsung SSD 960 EVO 250GB")
+                //{
+                //    foreach (var sensor in hardware.Sensors)
+                //    {
+                //        ssd = hardware.Name.Substring(0, 19);
+                //        if (sensor.SensorType == SensorType.Load && sensor.Name == "Total Activity")
+                //        {
+                //            ssdLoad = sensor.Value.Value;
+                //        }
+                //        if (sensor.SensorType == SensorType.Temperature && sensor.Name == "Temperature")
+                //        {
+                //            ssdTemp = sensor.Value.GetValueOrDefault();
+                //        }
+                //        if (sensor.SensorType == SensorType.Load && sensor.Name == "Used Space")
+                //        {
+                //            ssdUse = sensor.Value.GetValueOrDefault();
+                //        }
+                //    }
+                //}
 
-                if (hardware.HardwareType == HardwareType.Heatmaster)
-                {
-                    foreach (var sensor in hardware.Sensors)
-                    {
-                        if (sensor.SensorType == SensorType.Load && sensor.Name == "CPU Total")
-                        {
-                            cpuLoad = sensor.Value.Value;
-                        }
+                //if (hardware.HardwareType == HardwareType.Heatmaster)
+                //{
+                //    foreach (var sensor in hardware.Sensors)
+                //    {
+                //        if (sensor.SensorType == SensorType.Load && sensor.Name == "CPU Total")
+                //        {
+                //            cpuLoad = sensor.Value.Value;
+                //        }
 
-                        if (sensor.SensorType == SensorType.Temperature && sensor.Name == "CPU Package")
-                        {
-                            cpuTemp = sensor.Value.GetValueOrDefault();
-                        }
-                    }
-                }
+                //        if (sensor.SensorType == SensorType.Temperature && sensor.Name == "CPU Package")
+                //        {
+                //            cpuTemp = sensor.Value.GetValueOrDefault();
+                //        }
+                //    }
+                //}
                 /*---------------------------------Display---------------------------------*/
                 grCPU.Text = cpuName;
                 txtLoadCPU.Text = Math.Round(cpuLoad).ToString()+" %";
@@ -393,15 +375,15 @@ namespace Hardware_Monitor_Lite
                 txtDown.Text = Math.Round(download, 2).ToString("F2") + " MB/s";
                 txtUp.Text = Math.Round(upload, 2).ToString("F2") + " MB/s";
 
-                grHDD.Text = hdd;
-                txtHddLoad.Text = Math.Round(hddLoad).ToString() + " %";
-                txtHddUse.Text = Math.Round(hddUse).ToString() + " %";
-                txtHddTemp.Text = Math.Round(hddTemp).ToString() + " °C";
+                //grHDD.Text = hdd;
+                //txtHddLoad.Text = Math.Round(hddLoad).ToString() + " %";
+                //txtHddUse.Text = Math.Round(hddUse).ToString() + " %";
+                //txtHddTemp.Text = Math.Round(hddTemp).ToString() + " °C";
 
-                grSSD.Text = ssd;
-                txtSsdLoad.Text = Math.Round(ssdLoad).ToString() + " %";
-                txtSsdUse.Text = Math.Round(ssdUse).ToString() + " %";
-                txtSsdTemp.Text = Math.Round(ssdTemp).ToString() + " °C";
+                //grSSD.Text = ssd;
+                //txtSsdLoad.Text = Math.Round(ssdLoad).ToString() + " %";
+                //txtSsdUse.Text = Math.Round(ssdUse).ToString() + " %";
+                //txtSsdTemp.Text = Math.Round(ssdTemp).ToString() + " °C";
                 /*---------------------------------Send DATA---------------------------------*/
                 
             }
@@ -425,29 +407,29 @@ namespace Hardware_Monitor_Lite
             {
                 Speed = strNw
             };
-            HDD infoHDD = new HDD
-            {
-                Name = hdd,
-                Use = Math.Round(hddUse),
-                Load = Math.Round(hddLoad),
-                Temp = Math.Round(hddTemp)
+            //HDD infoHDD = new HDD
+            //{
+            //    Name = hdd,
+            //    Use = Math.Round(hddUse),
+            //    Load = Math.Round(hddLoad),
+            //    Temp = Math.Round(hddTemp)
 
-            };
-            SSD infoSSD = new SSD
-            {
-                Name = ssd,
-                Use = Math.Round(ssdUse),
-                Load = Math.Round(ssdLoad),
-                Temp = Math.Round(ssdTemp)
-            };
+            //};
+            //SSD infoSSD = new SSD
+            //{
+            //    Name = ssd,
+            //    Use = Math.Round(ssdUse),
+            //    Load = Math.Round(ssdLoad),
+            //    Temp = Math.Round(ssdTemp)
+            //};
             Infomation info = new Infomation
             {
                 CPU = dataCPU,
                 GPU = dataGPU,
                 RAM = dataRam,
-                Net = dataNet,
-                hddDrive = infoHDD,
-                ssdDrive = infoSSD
+                Net = dataNet
+                //hddDrive = infoHDD,
+                //ssdDrive = infoSSD
             };
             string obj = JsonConvert.SerializeObject(info);
             if (lblWIFIStatus.Text == "Connected")
@@ -472,7 +454,7 @@ namespace Hardware_Monitor_Lite
             }
             if (lblStatusWired.Text == "Connected")
             {
-                a = dataCPU.Name + "," + dataCPU.Load+","+dataCPU.Temp+","+dataGPU.Name+","+dataGPU.Load+","+dataGPU.Temp+","+dataRam.Use+","+dataNet.Speed+","+infoHDD.Name+","+infoHDD.Use+","+infoHDD.Load+","+infoHDD.Temp+ "," + infoSSD.Name + "," + infoSSD.Use + "," + infoSSD.Load + "," + infoSSD.Temp+"*";
+                a = dataCPU.Name + "," + dataCPU.Load+","+dataCPU.Temp+","+dataGPU.Name+","+dataGPU.Load+","+dataGPU.Temp+","+dataRam.Use+","+dataNet.Speed+"*";
                 serialPort1.Write(a);
             }
         }
