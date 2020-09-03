@@ -117,37 +117,43 @@ namespace Hardware_Monitor_Lite
                 cbbCom.Items.Add(port);
             }
             cbbCom.SelectedIndex = cbbCom.Items.IndexOf(ConfigurationManager.AppSettings["port"].ToString());
-            if (ckAutoWired.Checked == true)
+            try
             {
-                if (cbbCom.Text != "")
+                if (ckAutoWired.Checked == true)
                 {
-                    try
+                    if (cbbCom.Text != "")
                     {
-                        serialPort1.PortName = cbbCom.Text;
-                        if (!serialPort1.IsOpen)
+                        try
                         {
-                            serialPort1.Open();
-                            btnWired.Text = "Disconnect";
-                            btnWired.ForeColor = Color.Red;
-                            lblStatusWired.Text = "Connected";
-                            lblStatusWired.ForeColor = Color.Green;
-                            AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
-                            cbbCom.Enabled = false;
-                            btnReload.Enabled = false;
+                            serialPort1.PortName = cbbCom.Text;
+                            if (!serialPort1.IsOpen)
+                            {
+                                serialPort1.Open();
+                                btnWired.Text = "Disconnect";
+                                btnWired.ForeColor = Color.Red;
+                                lblStatusWired.Text = "Connected";
+                                lblStatusWired.ForeColor = Color.Green;
+                                AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
+                                cbbCom.Enabled = false;
+                                btnReload.Enabled = false;
+                            }
+                        }
+                        catch
+                        {
+                            AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy Port", ToolTipIcon.Warning);
+                            btnWired.Text = "Connect";
+                            btnWired.ForeColor = Color.Black;
+                            lblStatusWired.Text = "Disconnected";
+                            lblStatusWired.ForeColor = Color.Red;
+                            cbbCom.Enabled = true;
+                            btnReload.Enabled = true;
                         }
                     }
-                    catch
-                    {
-                        AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy Port", ToolTipIcon.Warning);
-                        btnWired.Text = "Connect";
-                        btnWired.ForeColor = Color.Black;
-                        lblStatusWired.Text = "Disconnected";
-                        lblStatusWired.ForeColor = Color.Red;
-                        cbbCom.Enabled = true;
-                        btnReload.Enabled = true;
-                    }
-                }
 
+                }
+            }catch(Exception ex)
+            {
+                throw ex;
             }
             /*WIFI*/
             string ip = ConfigurationManager.AppSettings["ip"].ToString();
@@ -155,35 +161,41 @@ namespace Hardware_Monitor_Lite
             {
                 txtIP.Text = ip;
             }
-            if (ckAutoWifi.Checked == true)
+            try
             {
-                if (ip == "")
+                if (ckAutoWifi.Checked == true)
                 {
-                    AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không có địa chỉ IP để kết nối\r\nYêu cầu nhập địa chỉ IP của server", ToolTipIcon.Warning);
-                }
-                else
-                {
-                    client.ConnectAsync(ip, 80).Wait(3000);
-                    if (client.Connected)
+                    if (ip == "")
                     {
-                        txtIP.Enabled = false;
-                        btnConnectWIFI.Text = "Disconnect";
-                        btnConnectWIFI.ForeColor = Color.Red;
-                        lblWIFIStatus.Text = "Connected";
-                        lblWIFIStatus.ForeColor = Color.Green;
-                        AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
+                        AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không có địa chỉ IP để kết nối\r\nYêu cầu nhập địa chỉ IP của server", ToolTipIcon.Warning);
                     }
                     else
                     {
-                        AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy server", ToolTipIcon.Warning);
-                        client.Close();
-                        btnConnectWIFI.Text = "Connect";
-                        btnConnectWIFI.ForeColor = Color.Black;
-                        lblWIFIStatus.Text = "Disconnected";
-                        lblWIFIStatus.ForeColor = Color.Red;
-                        client = new TcpClient();
+                        client.ConnectAsync(ip, 80).Wait(3000);
+                        if (client.Connected)
+                        {
+                            txtIP.Enabled = false;
+                            btnConnectWIFI.Text = "Disconnect";
+                            btnConnectWIFI.ForeColor = Color.Red;
+                            lblWIFIStatus.Text = "Connected";
+                            lblWIFIStatus.ForeColor = Color.Green;
+                            AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
+                        }
+                        else
+                        {
+                            AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy server", ToolTipIcon.Warning);
+                            client.Close();
+                            btnConnectWIFI.Text = "Connect";
+                            btnConnectWIFI.ForeColor = Color.Black;
+                            lblWIFIStatus.Text = "Disconnected";
+                            lblWIFIStatus.ForeColor = Color.Red;
+                            client = new TcpClient();
+                        }
                     }
                 }
+            }catch(Exception e)
+            {
+                throw e;
             }
         }
         private void AddMenu()
@@ -432,82 +444,100 @@ namespace Hardware_Monitor_Lite
                 //ssdDrive = infoSSD
             };
             string obj = JsonConvert.SerializeObject(info);
-            if (lblWIFIStatus.Text == "Connected")
+            try
             {
-                try
+                if (lblWIFIStatus.Text == "Connected")
                 {
-                    NetworkStream stream = client.GetStream();
-                    byte[] data = Encoding.ASCII.GetBytes(obj + "\r\n");
-                    stream.Write(data, 0, data.Length);
+                    try
+                    {
+                        NetworkStream stream = client.GetStream();
+                        byte[] data = Encoding.ASCII.GetBytes(obj + "\r\n");
+                        stream.Write(data, 0, data.Length);
+                    }
+                    catch (Exception)
+                    {
+                        AppIcon.ShowBalloonTip(5000, "Mất kêt nối", "Kiểm tra lại server", ToolTipIcon.Warning);
+                        txtIP.Enabled = true;
+                        timer1.Enabled = false;
+                        btnConnectWIFI.Text = "Connect";
+                        lblWIFIStatus.Text = "Disconnected";
+                        lblWIFIStatus.ForeColor = Color.Red;
+                        client.Close();
+                        client = new TcpClient();
+                    }
                 }
-                catch (Exception)
-                {
-                    AppIcon.ShowBalloonTip(5000, "Mất kêt nối", "Kiểm tra lại server", ToolTipIcon.Warning);
-                    txtIP.Enabled = true;
-                    timer1.Enabled = false;
-                    btnConnectWIFI.Text = "Connect";
-                    lblWIFIStatus.Text = "Disconnected";
-                    lblWIFIStatus.ForeColor = Color.Red;
-                    client.Close();
-                    client = new TcpClient();
-                }
+            }catch(Exception ex)
+            {
+                throw ex;
             }
-            if (lblStatusWired.Text == "Connected")
+            try
             {
-                a = dataCPU.Name + "," + dataCPU.Load+","+dataCPU.Temp+","+dataGPU.Name+","+dataGPU.Load+","+dataGPU.Temp+","+dataRam.Use+","+dataNet.Speed+"*";
-                serialPort1.Write(a);
+                if (lblStatusWired.Text == "Connected")
+                {
+                    a = dataCPU.Name + "," + dataCPU.Load + "," + dataCPU.Temp + "," + dataGPU.Name + "," + dataGPU.Load + "," + dataGPU.Temp + "," + dataRam.Use + "," + dataNet.Speed + "*";
+                    serialPort1.Write(a);
+                }
+            }catch(Exception ex)
+            {
+                throw ex;
             }
         }
         private void btnConnectWIFI_Click(object sender, EventArgs e)
         {
-            if (btnConnectWIFI.Text == "Connect")
+            try
             {
-                lblWIFIStatus.Text = "Connecting...";
-                lblWIFIStatus.ForeColor = Color.Black;
-                btnConnectWIFI.Enabled = false;
+                if (btnConnectWIFI.Text == "Connect")
+                {
+                    lblWIFIStatus.Text = "Connecting...";
+                    lblWIFIStatus.ForeColor = Color.Black;
+                    btnConnectWIFI.Enabled = false;
 
-                try
-                {
-                    client.ConnectAsync(txtIP.Text, 80).Wait(5000);
-                }
-                catch
-                {
-                    AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Địa Chỉ IP không đúng !!", ToolTipIcon.Warning);
-                    lblWIFIStatus.Text = "Disconnected";
-                    lblWIFIStatus.ForeColor = Color.Red;
-                }
-                if (client.Connected)
-                {
-                    txtIP.Enabled = false;
-                    btnConnectWIFI.Text = "Disconnect";
-                    btnConnectWIFI.ForeColor = Color.Red;
-                    lblWIFIStatus.Text = "Connected";
-                    lblWIFIStatus.ForeColor = Color.Green;
-                    AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
-                    Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                    _config.AppSettings.Settings["ip"].Value = txtIP.Text;
-                    _config.Save();
+                    try
+                    {
+                        client.ConnectAsync(txtIP.Text, 80).Wait(5000);
+                    }
+                    catch
+                    {
+                        AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Địa Chỉ IP không đúng !!", ToolTipIcon.Warning);
+                        lblWIFIStatus.Text = "Disconnected";
+                        lblWIFIStatus.ForeColor = Color.Red;
+                    }
+                    if (client.Connected)
+                    {
+                        txtIP.Enabled = false;
+                        btnConnectWIFI.Text = "Disconnect";
+                        btnConnectWIFI.ForeColor = Color.Red;
+                        lblWIFIStatus.Text = "Connected";
+                        lblWIFIStatus.ForeColor = Color.Green;
+                        AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
+                        Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                        _config.AppSettings.Settings["ip"].Value = txtIP.Text;
+                        _config.Save();
+                    }
+                    else
+                    {
+                        AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy server", ToolTipIcon.Warning);
+                        lblWIFIStatus.Text = "Disconnect";
+                        lblWIFIStatus.ForeColor = Color.Red;
+                        client.Close();
+                        client = new TcpClient();
+                    }
                 }
                 else
                 {
-                    AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy server", ToolTipIcon.Warning);
+                    txtIP.Enabled = true;
+                    btnConnectWIFI.Text = "Connect";
+                    btnConnectWIFI.ForeColor = Color.Black;
                     lblWIFIStatus.Text = "Disconnect";
                     lblWIFIStatus.ForeColor = Color.Red;
                     client.Close();
                     client = new TcpClient();
                 }
-            }
-            else
+                btnConnectWIFI.Enabled = true;
+            }catch(Exception ex)
             {
-                txtIP.Enabled = true;
-                btnConnectWIFI.Text = "Connect";
-                btnConnectWIFI.ForeColor = Color.Black;
-                lblWIFIStatus.Text = "Disconnect";
-                lblWIFIStatus.ForeColor = Color.Red;
-                client.Close();
-                client = new TcpClient();
+                throw ex;
             }
-            btnConnectWIFI.Enabled = true;
         }
         private void btnWired_Click(object sender, EventArgs e)
         {
@@ -598,28 +628,33 @@ namespace Hardware_Monitor_Lite
         }
         private void ckStartup_CheckedChanged(object sender, EventArgs e)
         {
-            Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            _config.AppSettings.Settings["startTray"].Value = ckStartup.Checked.ToString();
-            _config.Save();
-            using (TaskService ts = new TaskService())
+            try
             {
-                TaskDefinition td = ts.NewTask();
-                td.RegistrationInfo.Description = "HardwareMonitorLite";
-                td.Principal.RunLevel = TaskRunLevel.Highest;
-                td.Triggers.AddNew(TaskTriggerType.Logon);
-                td.Actions.Add(new ExecAction(Application.ExecutablePath, null));
-                if (ckStartup.Checked == true)
+                Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                _config.AppSettings.Settings["startTray"].Value = ckStartup.Checked.ToString();
+                _config.Save();
+                using (TaskService ts = new TaskService())
                 {
-                    ts.RootFolder.RegisterTaskDefinition("HardwareMonitorLite", td);
-                    AppIcon.ShowBalloonTip(500, "Khởi động cùng windows !", "Start with windows ! ", ToolTipIcon.Info);
+                    TaskDefinition td = ts.NewTask();
+                    td.RegistrationInfo.Description = "HardwareMonitorLite";
+                    td.Principal.RunLevel = TaskRunLevel.Highest;
+                    td.Triggers.AddNew(TaskTriggerType.Logon);
+                    td.Actions.Add(new ExecAction(Application.ExecutablePath, null));
+                    if (ckStartup.Checked == true)
+                    {
+                        ts.RootFolder.RegisterTaskDefinition("HardwareMonitorLite", td);
+                        AppIcon.ShowBalloonTip(500, "Khởi động cùng windows !", "Start with windows ! ", ToolTipIcon.Info);
+                    }
+                    else
+                    {
+                        ts.RootFolder.DeleteTask("HardwareMonitorLite");
+                        AppIcon.ShowBalloonTip(500, "Không khởi động cùng windows!", "Does not start with windows ! ", ToolTipIcon.Info);
+                    }
                 }
-                else {
-                    ts.RootFolder.DeleteTask("HardwareMonitorLite");
-                    AppIcon.ShowBalloonTip(500, "Không khởi động cùng windows!", "Does not start with windows ! ", ToolTipIcon.Info);
-                }
+            }catch(Exception ex)
+            {
+                throw ex;
             }
-
-
         }
         private void btnReload_Click(object sender, EventArgs e)
         {
