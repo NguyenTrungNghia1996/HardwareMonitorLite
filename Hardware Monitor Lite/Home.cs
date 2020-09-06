@@ -482,6 +482,7 @@ namespace Hardware_Monitor_Lite
                 throw ex;
             }
         }
+
         private void btnConnectWIFI_Click(object sender, EventArgs e)
         {
             try

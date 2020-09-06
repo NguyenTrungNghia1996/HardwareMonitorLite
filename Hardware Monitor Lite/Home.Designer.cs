@@ -55,15 +55,21 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtDown = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.AppIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ckMini = new System.Windows.Forms.ToolStripMenuItem();
+            this.ckStartup = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ckAutoWifi = new System.Windows.Forms.CheckBox();
             this.lblWIFIStatus = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnConnectWIFI = new System.Windows.Forms.Button();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.AppIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnReload = new System.Windows.Forms.Button();
             this.cbbCom = new System.Windows.Forms.ComboBox();
             this.ckAutoWired = new System.Windows.Forms.CheckBox();
@@ -71,18 +77,14 @@
             this.label17 = new System.Windows.Forms.Label();
             this.btnWired = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.settingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ckMini = new System.Windows.Forms.ToolStripMenuItem();
-            this.ckStartup = new System.Windows.Forms.ToolStripMenuItem();
             this.grCPU.SuspendLayout();
             this.grGPU.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -99,7 +101,7 @@
             this.grCPU.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grCPU.Location = new System.Drawing.Point(12, 27);
             this.grCPU.Name = "grCPU";
-            this.grCPU.Size = new System.Drawing.Size(211, 100);
+            this.grCPU.Size = new System.Drawing.Size(428, 100);
             this.grCPU.TabIndex = 0;
             this.grCPU.TabStop = false;
             // 
@@ -150,9 +152,9 @@
             this.grGPU.Controls.Add(this.txtLoadGPU);
             this.grGPU.Controls.Add(this.label6);
             this.grGPU.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grGPU.Location = new System.Drawing.Point(229, 27);
+            this.grGPU.Location = new System.Drawing.Point(12, 133);
             this.grGPU.Name = "grGPU";
-            this.grGPU.Size = new System.Drawing.Size(211, 100);
+            this.grGPU.Size = new System.Drawing.Size(428, 100);
             this.grGPU.TabIndex = 1;
             this.grGPU.TabStop = false;
             // 
@@ -222,7 +224,7 @@
             this.groupBox1.Controls.Add(this.txtTotalRam);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(446, 27);
+            this.groupBox1.Location = new System.Drawing.Point(12, 239);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(211, 100);
             this.groupBox1.TabIndex = 9;
@@ -293,7 +295,7 @@
             this.groupBox2.Controls.Add(this.txtDown);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(663, 27);
+            this.groupBox2.Location = new System.Drawing.Point(229, 239);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(211, 100);
             this.groupBox2.TabIndex = 10;
@@ -338,82 +340,6 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "Download:";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.ckAutoWifi);
-            this.groupBox3.Controls.Add(this.lblWIFIStatus);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.btnConnectWIFI);
-            this.groupBox3.Controls.Add(this.txtIP);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(12, 133);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(428, 100);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Wireless Connection";
-            // 
-            // ckAutoWifi
-            // 
-            this.ckAutoWifi.AutoSize = true;
-            this.ckAutoWifi.Location = new System.Drawing.Point(267, 61);
-            this.ckAutoWifi.Name = "ckAutoWifi";
-            this.ckAutoWifi.Size = new System.Drawing.Size(141, 29);
-            this.ckAutoWifi.TabIndex = 9;
-            this.ckAutoWifi.Text = "AutoConnect";
-            this.ckAutoWifi.UseVisualStyleBackColor = true;
-            this.ckAutoWifi.CheckedChanged += new System.EventHandler(this.ckAutoWifi_CheckedChanged);
-            // 
-            // lblWIFIStatus
-            // 
-            this.lblWIFIStatus.AutoSize = true;
-            this.lblWIFIStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWIFIStatus.ForeColor = System.Drawing.Color.Yellow;
-            this.lblWIFIStatus.Location = new System.Drawing.Point(74, 65);
-            this.lblWIFIStatus.Name = "lblWIFIStatus";
-            this.lblWIFIStatus.Size = new System.Drawing.Size(66, 21);
-            this.lblWIFIStatus.TabIndex = 8;
-            this.lblWIFIStatus.Text = "Standby";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(6, 65);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 21);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Status:";
-            // 
-            // btnConnectWIFI
-            // 
-            this.btnConnectWIFI.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConnectWIFI.Location = new System.Drawing.Point(267, 29);
-            this.btnConnectWIFI.Name = "btnConnectWIFI";
-            this.btnConnectWIFI.Size = new System.Drawing.Size(141, 33);
-            this.btnConnectWIFI.TabIndex = 5;
-            this.btnConnectWIFI.Text = "Connect";
-            this.btnConnectWIFI.UseVisualStyleBackColor = true;
-            this.btnConnectWIFI.Click += new System.EventHandler(this.btnConnectWIFI_Click);
-            // 
-            // txtIP
-            // 
-            this.txtIP.Location = new System.Drawing.Point(78, 29);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(183, 33);
-            this.txtIP.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 35);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 21);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "MCU IP:";
-            // 
             // AppIcon
             // 
             this.AppIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
@@ -422,102 +348,13 @@
             this.AppIcon.Visible = true;
             this.AppIcon.DoubleClick += new System.EventHandler(this.AppIcon_DoubleClick);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.btnReload);
-            this.groupBox4.Controls.Add(this.cbbCom);
-            this.groupBox4.Controls.Add(this.ckAutoWired);
-            this.groupBox4.Controls.Add(this.lblStatusWired);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.btnWired);
-            this.groupBox4.Controls.Add(this.label20);
-            this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(446, 133);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(428, 100);
-            this.groupBox4.TabIndex = 14;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Wired Connection";
-            // 
-            // btnReload
-            // 
-            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(250, 29);
-            this.btnReload.Name = "btnReload";
-            this.btnReload.Size = new System.Drawing.Size(33, 33);
-            this.btnReload.TabIndex = 11;
-            this.btnReload.UseVisualStyleBackColor = true;
-            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
-            // 
-            // cbbCom
-            // 
-            this.cbbCom.FormattingEnabled = true;
-            this.cbbCom.Location = new System.Drawing.Point(78, 28);
-            this.cbbCom.Name = "cbbCom";
-            this.cbbCom.Size = new System.Drawing.Size(166, 33);
-            this.cbbCom.TabIndex = 10;
-            // 
-            // ckAutoWired
-            // 
-            this.ckAutoWired.AutoSize = true;
-            this.ckAutoWired.Location = new System.Drawing.Point(267, 61);
-            this.ckAutoWired.Name = "ckAutoWired";
-            this.ckAutoWired.Size = new System.Drawing.Size(141, 29);
-            this.ckAutoWired.TabIndex = 9;
-            this.ckAutoWired.Text = "AutoConnect";
-            this.ckAutoWired.UseVisualStyleBackColor = true;
-            this.ckAutoWired.CheckedChanged += new System.EventHandler(this.ckAutoWired_CheckedChanged);
-            // 
-            // lblStatusWired
-            // 
-            this.lblStatusWired.AutoSize = true;
-            this.lblStatusWired.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatusWired.ForeColor = System.Drawing.Color.Yellow;
-            this.lblStatusWired.Location = new System.Drawing.Point(74, 65);
-            this.lblStatusWired.Name = "lblStatusWired";
-            this.lblStatusWired.Size = new System.Drawing.Size(66, 21);
-            this.lblStatusWired.TabIndex = 8;
-            this.lblStatusWired.Text = "Standby";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(6, 65);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(55, 21);
-            this.label17.TabIndex = 7;
-            this.label17.Text = "Status:";
-            // 
-            // btnWired
-            // 
-            this.btnWired.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWired.Location = new System.Drawing.Point(289, 29);
-            this.btnWired.Name = "btnWired";
-            this.btnWired.Size = new System.Drawing.Size(119, 33);
-            this.btnWired.TabIndex = 5;
-            this.btnWired.Text = "Connect";
-            this.btnWired.UseVisualStyleBackColor = true;
-            this.btnWired.Click += new System.EventHandler(this.btnWired_Click);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(6, 35);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(51, 21);
-            this.label20.TabIndex = 3;
-            this.label20.Text = "PORT:";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(451, 24);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -546,14 +383,191 @@
             this.ckStartup.Text = "Startup windows";
             this.ckStartup.CheckedChanged += new System.EventHandler(this.ckStartup_CheckedChanged);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Font = new System.Drawing.Font("Segoe UI Historic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(12, 354);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(428, 121);
+            this.tabControl1.TabIndex = 16;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage1.Controls.Add(this.ckAutoWifi);
+            this.tabPage1.Controls.Add(this.lblWIFIStatus);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.btnConnectWIFI);
+            this.tabPage1.Controls.Add(this.txtIP);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(420, 88);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Wireless Connection";
+            // 
+            // ckAutoWifi
+            // 
+            this.ckAutoWifi.AutoSize = true;
+            this.ckAutoWifi.Location = new System.Drawing.Point(263, 45);
+            this.ckAutoWifi.Name = "ckAutoWifi";
+            this.ckAutoWifi.Size = new System.Drawing.Size(139, 28);
+            this.ckAutoWifi.TabIndex = 21;
+            this.ckAutoWifi.Text = "AutoConnect";
+            this.ckAutoWifi.UseVisualStyleBackColor = true;
+            this.ckAutoWifi.CheckedChanged += new System.EventHandler(this.ckAutoWifi_CheckedChanged);
+            // 
+            // lblWIFIStatus
+            // 
+            this.lblWIFIStatus.AutoSize = true;
+            this.lblWIFIStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWIFIStatus.ForeColor = System.Drawing.Color.Yellow;
+            this.lblWIFIStatus.Location = new System.Drawing.Point(70, 48);
+            this.lblWIFIStatus.Name = "lblWIFIStatus";
+            this.lblWIFIStatus.Size = new System.Drawing.Size(66, 21);
+            this.lblWIFIStatus.TabIndex = 20;
+            this.lblWIFIStatus.Text = "Standby";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(6, 48);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 21);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Status:";
+            // 
+            // btnConnectWIFI
+            // 
+            this.btnConnectWIFI.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnectWIFI.Location = new System.Drawing.Point(263, 7);
+            this.btnConnectWIFI.Name = "btnConnectWIFI";
+            this.btnConnectWIFI.Size = new System.Drawing.Size(151, 29);
+            this.btnConnectWIFI.TabIndex = 18;
+            this.btnConnectWIFI.Text = "Connect";
+            this.btnConnectWIFI.UseVisualStyleBackColor = true;
+            this.btnConnectWIFI.Click += new System.EventHandler(this.btnConnectWIFI_Click);
+            // 
+            // txtIP
+            // 
+            this.txtIP.Location = new System.Drawing.Point(74, 7);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(183, 29);
+            this.txtIP.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 21);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "MCU IP:";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage2.Controls.Add(this.btnReload);
+            this.tabPage2.Controls.Add(this.cbbCom);
+            this.tabPage2.Controls.Add(this.ckAutoWired);
+            this.tabPage2.Controls.Add(this.lblStatusWired);
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.btnWired);
+            this.tabPage2.Controls.Add(this.label20);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(420, 88);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "WiredConnection";
+            // 
+            // btnReload
+            // 
+            this.btnReload.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
+            this.btnReload.Location = new System.Drawing.Point(238, 9);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(33, 29);
+            this.btnReload.TabIndex = 18;
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
+            // cbbCom
+            // 
+            this.cbbCom.FormattingEnabled = true;
+            this.cbbCom.Location = new System.Drawing.Point(66, 9);
+            this.cbbCom.Name = "cbbCom";
+            this.cbbCom.Size = new System.Drawing.Size(166, 28);
+            this.cbbCom.TabIndex = 17;
+            // 
+            // ckAutoWired
+            // 
+            this.ckAutoWired.AutoSize = true;
+            this.ckAutoWired.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckAutoWired.Location = new System.Drawing.Point(273, 53);
+            this.ckAutoWired.Name = "ckAutoWired";
+            this.ckAutoWired.Size = new System.Drawing.Size(141, 29);
+            this.ckAutoWired.TabIndex = 16;
+            this.ckAutoWired.Text = "AutoConnect";
+            this.ckAutoWired.UseVisualStyleBackColor = true;
+            this.ckAutoWired.CheckedChanged += new System.EventHandler(this.ckAutoWired_CheckedChanged);
+            // 
+            // lblStatusWired
+            // 
+            this.lblStatusWired.AutoSize = true;
+            this.lblStatusWired.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatusWired.ForeColor = System.Drawing.Color.Yellow;
+            this.lblStatusWired.Location = new System.Drawing.Point(62, 57);
+            this.lblStatusWired.Name = "lblStatusWired";
+            this.lblStatusWired.Size = new System.Drawing.Size(66, 21);
+            this.lblStatusWired.TabIndex = 15;
+            this.lblStatusWired.Text = "Standby";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(9, 57);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(55, 21);
+            this.label17.TabIndex = 14;
+            this.label17.Text = "Status:";
+            // 
+            // btnWired
+            // 
+            this.btnWired.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWired.Location = new System.Drawing.Point(277, 9);
+            this.btnWired.Name = "btnWired";
+            this.btnWired.Size = new System.Drawing.Size(137, 29);
+            this.btnWired.TabIndex = 13;
+            this.btnWired.Text = "Connect";
+            this.btnWired.UseVisualStyleBackColor = true;
+            this.btnWired.Click += new System.EventHandler(this.btnWired_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(9, 12);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(51, 21);
+            this.label20.TabIndex = 12;
+            this.label20.Text = "PORT:";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(884, 246);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(451, 488);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grGPU);
@@ -562,8 +576,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(900, 285);
-            this.MinimumSize = new System.Drawing.Size(900, 285);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hardware Monitor Lite";
@@ -577,12 +589,13 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -615,27 +628,28 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label txtDown;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.NotifyIcon AppIcon;
+        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ckMini;
+        private System.Windows.Forms.ToolStripMenuItem ckStartup;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.CheckBox ckAutoWifi;
         private System.Windows.Forms.Label lblWIFIStatus;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnConnectWIFI;
         private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox ckAutoWifi;
-        private System.Windows.Forms.NotifyIcon AppIcon;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.ComboBox cbbCom;
         private System.Windows.Forms.CheckBox ckAutoWired;
         private System.Windows.Forms.Label lblStatusWired;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnWired;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox cbbCom;
-        private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ckMini;
-        private System.Windows.Forms.Button btnReload;
-        private System.Windows.Forms.ToolStripMenuItem ckStartup;
     }
 }
 
