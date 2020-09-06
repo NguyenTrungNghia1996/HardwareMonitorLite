@@ -14,6 +14,7 @@ using LibreHardwareMonitor.Hardware;
 using Newtonsoft.Json;
 using System.IO.Ports;
 using Microsoft.Win32.TaskScheduler;
+using System.Threading;
 
 namespace Hardware_Monitor_Lite
 {
@@ -105,7 +106,7 @@ namespace Hardware_Monitor_Lite
                 ckStartup.CheckState = CheckState.Unchecked;
             }
 
-            serialPort1.BaudRate = 9600;
+            serialPort1.BaudRate = 115200;
             serialPort1.Parity = Parity.None;
             serialPort1.StopBits = StopBits.One;
             serialPort1.DataBits = 8;
@@ -162,12 +163,12 @@ namespace Hardware_Monitor_Lite
                 txtIP.Text = ip;
             }
             try
-            {
+            {   
                 if (ckAutoWifi.Checked == true)
                 {
                     if (ip == "")
                     {
-                        AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không có địa chỉ IP để kết nối\r\nYêu cầu nhập địa chỉ IP của server", ToolTipIcon.Warning);
+                        AppIcon.ShowBalloonTip(2000, "Lỗi kêt nối", "Không có địa chỉ IP để kết nối\r\nYêu cầu nhập địa chỉ IP của server", ToolTipIcon.Warning);
                     }
                     else
                     {
@@ -179,11 +180,11 @@ namespace Hardware_Monitor_Lite
                             btnConnectWIFI.ForeColor = Color.Red;
                             lblWIFIStatus.Text = "Connected";
                             lblWIFIStatus.ForeColor = Color.Green;
-                            AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
+                            AppIcon.ShowBalloonTip(2000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
                         }
                         else
                         {
-                            AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy server", ToolTipIcon.Warning);
+                            AppIcon.ShowBalloonTip(2000, "Lỗi kêt nối", "Không tìm thấy server", ToolTipIcon.Warning);
                             client.Close();
                             btnConnectWIFI.Text = "Connect";
                             btnConnectWIFI.ForeColor = Color.Black;
@@ -314,62 +315,6 @@ namespace Hardware_Monitor_Lite
                         }
                     }
                 }
-                /*---------------------------------Drive---------------------------------*/
-                //if (hardware.Name == "WDC WD10EZEX-00WN4A0")
-                //{
-                //    foreach (var sensor in hardware.Sensors)
-                //    {
-                //        hdd = hardware.Name;
-                //        if (sensor.SensorType == SensorType.Load && sensor.Name == "Total Activity")
-                //        {
-                //            hddLoad = sensor.Value.Value;
-                //        }
-                //        if (sensor.SensorType == SensorType.Temperature && sensor.Name == "Temperature")
-                //        {
-                //            hddTemp = sensor.Value.GetValueOrDefault();
-                //        }
-                //        if (sensor.SensorType == SensorType.Load && sensor.Name == "Used Space")
-                //        {
-                //            hddUse = sensor.Value.GetValueOrDefault();
-                //        }
-                //    }
-                //}
-
-                //if (hardware.Name == "Samsung SSD 960 EVO 250GB")
-                //{
-                //    foreach (var sensor in hardware.Sensors)
-                //    {
-                //        ssd = hardware.Name.Substring(0, 19);
-                //        if (sensor.SensorType == SensorType.Load && sensor.Name == "Total Activity")
-                //        {
-                //            ssdLoad = sensor.Value.Value;
-                //        }
-                //        if (sensor.SensorType == SensorType.Temperature && sensor.Name == "Temperature")
-                //        {
-                //            ssdTemp = sensor.Value.GetValueOrDefault();
-                //        }
-                //        if (sensor.SensorType == SensorType.Load && sensor.Name == "Used Space")
-                //        {
-                //            ssdUse = sensor.Value.GetValueOrDefault();
-                //        }
-                //    }
-                //}
-
-                //if (hardware.HardwareType == HardwareType.Heatmaster)
-                //{
-                //    foreach (var sensor in hardware.Sensors)
-                //    {
-                //        if (sensor.SensorType == SensorType.Load && sensor.Name == "CPU Total")
-                //        {
-                //            cpuLoad = sensor.Value.Value;
-                //        }
-
-                //        if (sensor.SensorType == SensorType.Temperature && sensor.Name == "CPU Package")
-                //        {
-                //            cpuTemp = sensor.Value.GetValueOrDefault();
-                //        }
-                //    }
-                //}
                 /*---------------------------------Display---------------------------------*/
                 grCPU.Text = cpuName;
                 txtLoadCPU.Text = Math.Round(cpuLoad).ToString()+" %";
@@ -387,15 +332,6 @@ namespace Hardware_Monitor_Lite
                 txtDown.Text = Math.Round(download, 2).ToString("F2") + " MB/s";
                 txtUp.Text = Math.Round(upload, 2).ToString("F2") + " MB/s";
 
-                //grHDD.Text = hdd;
-                //txtHddLoad.Text = Math.Round(hddLoad).ToString() + " %";
-                //txtHddUse.Text = Math.Round(hddUse).ToString() + " %";
-                //txtHddTemp.Text = Math.Round(hddTemp).ToString() + " °C";
-
-                //grSSD.Text = ssd;
-                //txtSsdLoad.Text = Math.Round(ssdLoad).ToString() + " %";
-                //txtSsdUse.Text = Math.Round(ssdUse).ToString() + " %";
-                //txtSsdTemp.Text = Math.Round(ssdTemp).ToString() + " °C";
                 /*---------------------------------Send DATA---------------------------------*/
                 
             }
@@ -419,29 +355,13 @@ namespace Hardware_Monitor_Lite
             {
                 Speed = strNw
             };
-            //HDD infoHDD = new HDD
-            //{
-            //    Name = hdd,
-            //    Use = Math.Round(hddUse),
-            //    Load = Math.Round(hddLoad),
-            //    Temp = Math.Round(hddTemp)
-
-            //};
-            //SSD infoSSD = new SSD
-            //{
-            //    Name = ssd,
-            //    Use = Math.Round(ssdUse),
-            //    Load = Math.Round(ssdLoad),
-            //    Temp = Math.Round(ssdTemp)
-            //};
             Infomation info = new Infomation
             {
                 CPU = dataCPU,
                 GPU = dataGPU,
                 RAM = dataRam,
                 Net = dataNet
-                //hddDrive = infoHDD,
-                //ssdDrive = infoSSD
+               
             };
             string obj = JsonConvert.SerializeObject(info);
             try
@@ -476,6 +396,7 @@ namespace Hardware_Monitor_Lite
                 {
                     a = dataCPU.Name + "," + dataCPU.Load + "," + dataCPU.Temp + "," + dataGPU.Name + "," + dataGPU.Load + "," + dataGPU.Temp + "," + dataRam.Use + "," + dataNet.Speed + "*";
                     serialPort1.Write(a);
+                    serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(Data);
                 }
             }catch(Exception ex)
             {
@@ -483,99 +404,141 @@ namespace Hardware_Monitor_Lite
             }
         }
 
-        private void btnConnectWIFI_Click(object sender, EventArgs e)
+        private void Data(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
-                if (btnConnectWIFI.Text == "Connect")
-                {
-                    lblWIFIStatus.Text = "Connecting...";
-                    lblWIFIStatus.ForeColor = Color.Black;
-                    btnConnectWIFI.Enabled = false;
-
-                    try
-                    {
-                        client.ConnectAsync(txtIP.Text, 80).Wait(5000);
-                    }
-                    catch
-                    {
-                        AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Địa Chỉ IP không đúng !!", ToolTipIcon.Warning);
-                        lblWIFIStatus.Text = "Disconnected";
-                        lblWIFIStatus.ForeColor = Color.Red;
-                    }
-                    if (client.Connected)
-                    {
-                        txtIP.Enabled = false;
-                        btnConnectWIFI.Text = "Disconnect";
-                        btnConnectWIFI.ForeColor = Color.Red;
-                        lblWIFIStatus.Text = "Connected";
-                        lblWIFIStatus.ForeColor = Color.Green;
-                        AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
-                        Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                        _config.AppSettings.Settings["ip"].Value = txtIP.Text;
-                        _config.Save();
-                    }
-                    else
-                    {
-                        AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy server", ToolTipIcon.Warning);
-                        lblWIFIStatus.Text = "Disconnect";
-                        lblWIFIStatus.ForeColor = Color.Red;
-                        client.Close();
-                        client = new TcpClient();
-                    }
-                }
-                else
-                {
-                    txtIP.Enabled = true;
-                    btnConnectWIFI.Text = "Connect";
-                    btnConnectWIFI.ForeColor = Color.Black;
-                    lblWIFIStatus.Text = "Disconnect";
-                    lblWIFIStatus.ForeColor = Color.Red;
-                    client.Close();
-                    client = new TcpClient();
-                }
-                btnConnectWIFI.Enabled = true;
-            }catch(Exception ex)
-            {
-                throw ex;
-            }
-        }
-        private void btnWired_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!serialPort1.IsOpen)
-                {
-                    serialPort1.PortName = cbbCom.Text;
-                    Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                    _config.AppSettings.Settings["port"].Value = cbbCom.Text;
-                    _config.Save();
-                    serialPort1.Open();
-                    btnWired.Text = "Disconnect";
-                    btnWired.ForeColor = Color.Red;
-                    lblStatusWired.Text = "Connected";
-                    lblStatusWired.ForeColor = Color.Green;
-                    AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
-                    cbbCom.Enabled = false;
-                    btnReload.Enabled = false;
-                }
-                else
-                {
-                    serialPort1.Close();
-                    btnWired.Text = "Connect";
-                    btnWired.ForeColor = Color.Black;
-                    lblStatusWired.Text = "Disconnect";
-                    lblStatusWired.ForeColor = Color.Red;
-                    AppIcon.ShowBalloonTip(5000, "Đã ngắt kết nối ", "Disconnected", ToolTipIcon.Warning);
-                    cbbCom.Enabled = true;
-                    btnReload.Enabled = true;
-                }
+                SerialPort spl = (SerialPort)sender;
+                Console.WriteLine(spl.ReadLine());
             }
             catch
             {
-                AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy PORT", ToolTipIcon.Warning);
-                cbbCom.Enabled = true;
+
             }
+        }
+
+      
+        private void btnConnectWIFI_Click(object sender, EventArgs e)
+        {
+
+            Thread threadWIFI = new Thread(() => {
+                MethodInvoker method = delegate
+                {
+                    try
+                    {
+                        if (btnConnectWIFI.Text == "Connect")
+                        {
+                            lblWIFIStatus.Text = "Connecting...";
+                            lblWIFIStatus.ForeColor = Color.Black;
+                            btnConnectWIFI.Enabled = false;
+
+                            try
+                            {
+                                client.ConnectAsync(txtIP.Text, 80).Wait(5000);
+                            }
+                            catch
+                            {
+                                AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Địa Chỉ IP không đúng !!", ToolTipIcon.Warning);
+                                lblWIFIStatus.Text = "Disconnected";
+                                lblWIFIStatus.ForeColor = Color.Red;
+                            }
+                            if (client.Connected)
+                            {
+                                txtIP.Enabled = false;
+                                btnConnectWIFI.Text = "Disconnect";
+                                btnConnectWIFI.ForeColor = Color.Red;
+                                lblWIFIStatus.Text = "Connected";
+                                lblWIFIStatus.ForeColor = Color.Green;
+                                AppIcon.ShowBalloonTip(5000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
+                                Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                                _config.AppSettings.Settings["ip"].Value = txtIP.Text;
+                                _config.Save();
+                            }
+                            else
+                            {
+                                AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Không tìm thấy server", ToolTipIcon.Warning);
+                                lblWIFIStatus.Text = "Disconnect";
+                                lblWIFIStatus.ForeColor = Color.Red;
+                                client.Close();
+                                client = new TcpClient();
+                            }
+                        }
+                        else
+                        {
+                            txtIP.Enabled = true;
+                            btnConnectWIFI.Text = "Connect";
+                            btnConnectWIFI.ForeColor = Color.Black;
+                            lblWIFIStatus.Text = "Disconnect";
+                            lblWIFIStatus.ForeColor = Color.Red;
+                            client.Close();
+                            client = new TcpClient();
+                        }
+                        btnConnectWIFI.Enabled = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                };
+
+                if (InvokeRequired)
+                    BeginInvoke(method);
+                else
+                    method.Invoke();
+            });
+            threadWIFI.IsBackground = true;
+            threadWIFI.Start(); 
+        }
+        private void btnWired_Click(object sender, EventArgs e)
+        {
+            Thread threadWired = new Thread(() =>
+            {
+                MethodInvoker method = delegate
+                {
+                    try
+                    {
+                        if (!serialPort1.IsOpen)
+                        {
+                            serialPort1.PortName = cbbCom.Text;
+                            Configuration _config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                            _config.AppSettings.Settings["port"].Value = cbbCom.Text;
+                            _config.Save();
+                            serialPort1.Open();
+                            btnWired.Text = "Disconnect";
+                            btnWired.ForeColor = Color.Red;
+                            lblStatusWired.Text = "Connected";
+                            lblStatusWired.ForeColor = Color.Green;
+                            AppIcon.ShowBalloonTip(2000, "Kết nối thành công ", "Connection Successful", ToolTipIcon.Info);
+                            cbbCom.Enabled = false;
+                            btnReload.Enabled = false;
+                        }
+                        else
+                        {
+                            serialPort1.Close();
+                            btnWired.Text = "Connect";
+                            btnWired.ForeColor = Color.Black;
+                            lblStatusWired.Text = "Disconnect";
+                            lblStatusWired.ForeColor = Color.Red;
+                            AppIcon.ShowBalloonTip(2000, "Đã ngắt kết nối ", "Disconnected", ToolTipIcon.Warning);
+                            cbbCom.Enabled = true;
+                            btnReload.Enabled = true;
+                        }
+                    }
+                    catch
+                    {
+                        AppIcon.ShowBalloonTip(2000, "Lỗi kêt nối", "Không tìm thấy PORT", ToolTipIcon.Warning);
+                        cbbCom.Enabled = true;
+                    }
+                };
+
+                if (InvokeRequired)
+                    BeginInvoke(method);
+                else
+                    method.Invoke();
+            });
+            threadWired.IsBackground = true;
+            threadWired.Start();
+            
 
         }
         private void ckAutoWifi_CheckedChanged(object sender, EventArgs e)
