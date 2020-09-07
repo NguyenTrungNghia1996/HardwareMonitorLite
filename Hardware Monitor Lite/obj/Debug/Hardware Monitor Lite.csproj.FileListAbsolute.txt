@@ -100,6 +100,4 @@ C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debu
 C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.CopyComplete
 C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.exe
 C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.pdb
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\InTheHand.Net.Personal.dll
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\InTheHand.Net.Personal.xml
 C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csprojAssemblyReference.cache

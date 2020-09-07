@@ -15,11 +15,20 @@ using Newtonsoft.Json;
 using System.IO.Ports;
 using Microsoft.Win32.TaskScheduler;
 using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace Hardware_Monitor_Lite
 {
     public partial class Home : Form
     {
+        private const int APPCOMMAND_VOLUME_MUTE = 0x80000;
+        private const int APPCOMMAND_VOLUME_UP = 0xA0000;
+        private const int APPCOMMAND_VOLUME_DOWN = 0x90000;
+        private const int WM_APPCOMMAND = 0x319;
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SendMessageW(IntPtr hWnd, int Msg,
+            IntPtr wParam, IntPtr lParam);
         readonly private Computer thisComputer = new Computer();
         public TcpClient client = new TcpClient();
         string cpuName = "", gpuName = "", strNw = "";
@@ -417,7 +426,24 @@ namespace Hardware_Monitor_Lite
             }
         }
 
-      
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle,
+                (IntPtr)APPCOMMAND_VOLUME_UP);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle,
+               (IntPtr)APPCOMMAND_VOLUME_MUTE);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SendMessageW(this.Handle, WM_APPCOMMAND, this.Handle,
+                (IntPtr)APPCOMMAND_VOLUME_DOWN);
+        }
+
         private void btnConnectWIFI_Click(object sender, EventArgs e)
         {
 
