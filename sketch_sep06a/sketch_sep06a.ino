@@ -4,6 +4,8 @@
 #include <ESP8266HTTPClient.h>      
 #include <DNSServer.h>
 #include <ESP8266WebServer.h>
+#include <Ticker.h>
+
 const char* ssid = "ThanhHien";
 const char* password = "1234qwer";
 const String CityID = "1581130";             
