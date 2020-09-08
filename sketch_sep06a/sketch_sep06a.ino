@@ -1,11 +1,11 @@
 #include <ArduinoJson.h>
-//#include <WiFi.h>
 #include <ESP8266WiFi.h> 
 #include <ESP8266HTTPClient.h>      
 #include <DNSServer.h>
 #include <ESP8266WebServer.h>
 #include <Ticker.h>
 
+Ticker flipper;
 const char* ssid = "ThanhHien";
 const char* password = "1234qwer";
 const String CityID = "1581130";             
@@ -18,25 +18,25 @@ int  iterations = 20;
 DynamicJsonDocument doc(2400);
 void setup() {
   Serial.begin(115200);
-  //WiFi.enableSTA(true);
-  delay(2000);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
+  
 }
 
 void loop() {
   delay(2000);
+  
   if (iterations == 20)//We check for updated weather forecast once every hour
   {
-    getWeatherData();
+    getWeatherForecastData();
     iterations = 0;
   }
   iterations++;
 }
-void getWeatherData() //client function to send/receive GET request data.
+void getWeatherForecastData() //client function to send/receive GET request data.
 {
   String result = "";
   WiFiClient client;
@@ -57,8 +57,6 @@ void getWeatherData() //client function to send/receive GET request data.
       return;
     }
   }
-
-  
   while (client.available()) {
     result = client.readStringUntil('\r');
   }
