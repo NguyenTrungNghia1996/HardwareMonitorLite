@@ -495,7 +495,7 @@
             // 
             this.btnReload.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReload.Image = ((System.Drawing.Image)(resources.GetObject("btnReload.Image")));
-            this.btnReload.Location = new System.Drawing.Point(238, 9);
+            this.btnReload.Location = new System.Drawing.Point(238, 11);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(33, 29);
             this.btnReload.TabIndex = 18;
@@ -504,10 +504,11 @@
             // 
             // cbbCom
             // 
+            this.cbbCom.Font = new System.Drawing.Font("Segoe UI Historic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbCom.FormattingEnabled = true;
-            this.cbbCom.Location = new System.Drawing.Point(66, 9);
+            this.cbbCom.Location = new System.Drawing.Point(67, 11);
             this.cbbCom.Name = "cbbCom";
-            this.cbbCom.Size = new System.Drawing.Size(166, 25);
+            this.cbbCom.Size = new System.Drawing.Size(166, 29);
             this.cbbCom.TabIndex = 17;
             // 
             // ckAutoWired
@@ -546,7 +547,7 @@
             // btnWired
             // 
             this.btnWired.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWired.Location = new System.Drawing.Point(277, 9);
+            this.btnWired.Location = new System.Drawing.Point(280, 11);
             this.btnWired.Name = "btnWired";
             this.btnWired.Size = new System.Drawing.Size(137, 29);
             this.btnWired.TabIndex = 13;
@@ -558,7 +559,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(9, 12);
+            this.label20.Location = new System.Drawing.Point(13, 14);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(51, 21);
             this.label20.TabIndex = 12;

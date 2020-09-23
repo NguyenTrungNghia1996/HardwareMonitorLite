@@ -444,6 +444,14 @@ namespace Hardware_Monitor_Lite
                                 _config.AppSettings.Settings["ip"].Value = txtIP.Text;
                                 _config.Save();
                             }
+                            else
+                            {
+                                AppIcon.ShowBalloonTip(5000, "Lỗi kêt nối", "Địa Chỉ IP không đúng !!", ToolTipIcon.Warning);
+                                lblWIFIStatus.Text = "Disconnected";
+                                lblWIFIStatus.ForeColor = Color.Red;
+                                client.Close();
+                                client = new TcpClient();
+                            }
                         }
                         catch
                         {
@@ -512,6 +520,10 @@ namespace Hardware_Monitor_Lite
                     }
                     catch
                     {
+                        btnWired.Text = "Connect";
+                        btnWired.ForeColor = Color.Black;
+                        lblStatusWired.Text = "Disconnect";
+                        lblStatusWired.ForeColor = Color.Red;
                         AppIcon.ShowBalloonTip(2000, "Lỗi kêt nối", "Không tìm thấy PORT", ToolTipIcon.Warning);
                         cbbCom.Enabled = true;
                     }
