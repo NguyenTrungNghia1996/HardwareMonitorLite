@@ -87,17 +87,16 @@ D:\GIT\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite
 D:\GIT\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.CopyComplete
 D:\GIT\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.exe
 D:\GIT\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.pdb
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Hardware Monitor Lite.exe.config
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Hardware Monitor Lite.exe
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Hardware Monitor Lite.pdb
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Newtonsoft.Json.dll
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Newtonsoft.Json.xml
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware_Monitor_Lite.About.resources
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware_Monitor_Lite.Home.resources
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware_Monitor_Lite.Properties.Resources.resources
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.GenerateResource.cache
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.CoreCompileInputs.cache
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.CopyComplete
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.exe
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.pdb
-C:\Users\nghia\Desktop\GitHub\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csprojAssemblyReference.cache
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Hardware Monitor Lite.exe.config
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Hardware Monitor Lite.exe
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Hardware Monitor Lite.pdb
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Newtonsoft.Json.dll
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\bin\Debug\Newtonsoft.Json.xml
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware_Monitor_Lite.About.resources
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware_Monitor_Lite.Home.resources
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware_Monitor_Lite.Properties.Resources.resources
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.GenerateResource.cache
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.CoreCompileInputs.cache
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.csproj.CopyComplete
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.exe
+C:\Users\nghia\Desktop\github\HardwareMonitorLite\Hardware Monitor Lite\obj\Debug\Hardware Monitor Lite.pdb
