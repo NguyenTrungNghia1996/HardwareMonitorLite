@@ -323,8 +323,8 @@ namespace Hardware_Monitor_Lite
                 txtRamUse.Text = Math.Round(ramUse).ToString() + " GB";
                 txtRamLoad.Text = Math.Round(ramLoad).ToString() + " %";
 
-                txtDown.Text = Math.Round(download, 2).ToString("F2") + " MB/s";
-                txtUp.Text = Math.Round(upload, 2).ToString("F2") + " MB/s";
+                txtDown.Text = Math.Round(download, 2).ToString("F2") + " Mbps";
+                txtUp.Text = Math.Round(upload, 2).ToString("F2") + " Mbps";
 
                 /*---------------------------------Send DATA---------------------------------*/
 
