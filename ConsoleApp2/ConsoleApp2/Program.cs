@@ -1,5 +1,6 @@
 ﻿using LibreHardwareMonitor.Hardware;
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp2
 {
@@ -35,27 +36,32 @@ namespace ConsoleApp2
 
             computer.Open();
             computer.Accept(new UpdateVisitor());
-
+            var ListDisk = new List<diskDrive>();
+            
             foreach (IHardware hardware in computer.Hardware)
             {
-                Console.WriteLine("Hardware: {0}", hardware.Name);
-
-                //foreach (ISensor sensor in hardware.Sensors)
-                //{
-                //    //Console.WriteLine("\tSensor: {0}, value: {1}", sensor.Name, sensor.Value);
-                //    Console.WriteLine("{0} {1} {2} = {3}", sensor.Name, sensor.Hardware, sensor.SensorType, sensor.Value);
-                //}
-                if(hardware.HardwareType == HardwareType.Storage)
+                if (hardware.HardwareType == HardwareType.Storage)
                 {
+                    Console.WriteLine("Hardware: {0}", hardware.Name);
                     foreach (ISensor sensor in hardware.Sensors)
                     {
                         //Console.WriteLine("\tSensor: {0}, value: {1}", sensor.Name, sensor.Value);
-                        Console.WriteLine("{0} {1} {2} = {3}", sensor.Name, sensor.Hardware, sensor.SensorType, sensor.Value);
+                        Console.WriteLine("{0} {1} ={2} ", sensor.Name, sensor.SensorType, sensor.Value);
                     }
+                    var disk = new diskDrive();
+                    disk.Name = hardware.Name;
+                    ListDisk.Add(disk);
                 }
             }
-           
+
             Console.ReadLine();
+
         }
+        public class diskDrive {
+            public string Name { get; set; }
+            public string Use { get; set; }
+            public string Load { get; set; }
+        }
+
     }
 }
