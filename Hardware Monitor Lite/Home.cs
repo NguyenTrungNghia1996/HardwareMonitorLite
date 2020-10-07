@@ -417,6 +417,17 @@ namespace Hardware_Monitor_Lite
                 (IntPtr)APPCOMMAND_VOLUME_DOWN);
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            TabPage TabPage = new TabPage { Text = "test" };
+            
+            // TabControl.TabPages.Add(TabPage);
+            // TabControl2.SelectedTab = TabPage;
+            tabControl2.TabPages.Remove(tabPage3);
+            tabControl2.TabPages.Add(TabPage);
+            tabControl2.SelectedTab = TabPage;
+        }
+
         private void btnConnectWIFI_Click(object sender, EventArgs e)
         {
 
