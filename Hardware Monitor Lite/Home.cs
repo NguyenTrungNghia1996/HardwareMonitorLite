@@ -2,6 +2,7 @@
 using Microsoft.Win32.TaskScheduler;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.IO.Ports;
@@ -25,38 +26,51 @@ namespace Hardware_Monitor_Lite
             IntPtr wParam, IntPtr lParam);
         readonly private Computer thisComputer = new Computer();
         public TcpClient client = new TcpClient();
-        string cpuName = "", gpuName = "", strNw = "";
-        float cpuLoad = 0, cpuTemp = 0;
-        float gpuLoad = 0, gpuTemp = 0, gpuFan = 0, gpuFanLoad = 0;
-        float ramLoad = 0, ramUse = 0, totalRam = 0;
-        float upload = 0, download = 0;
+        //string cpuName = "", gpuName = "", strNw = "";
+        //float cpuLoad = 0, cpuTemp = 0;
+        //float gpuLoad = 0, gpuTemp = 0, gpuFan = 0, gpuFanLoad = 0;
+        //float ramLoad = 0, ramUse = 0, totalRam = 0;
+        //float upload = 0, download = 0;
         string a;
         public class Processor
         {
             public string Name { get; set; }
-            public double Load { get; set; }
-            public double Temp { get; set; }
+            public int Load { get; set; }
+            public int Temp { get; set; }
         }
         public class Graphic
         {
             public string Name { get; set; }
-            public double Load { get; set; }
-            public double Temp { get; set; }
+            public int Load { get; set; }
+            public int Temp { get; set; }
+            public int Fan { get; set; }
+            public int FanLoad { get; set; }
         }
         public class Ram
         {
-            public string Use { get; set; }
+            public int RamUse { get; set; }
+            public int RamTotal { get; set; }
+            public int RamLoad { get; set; }
         }
-        public class Connection
+        public class InternetSpeed
         {
-            public string Speed { get; set; }
+            public double DownloadSpeed { get; set; }
+            public double UpSpeed { get; set; }
+        }
+        public class diskDrive
+        {
+            public string Name { get; set; }
+            public int Use { get; set; }
+            public int Load { get; set; }
+            public int Temp { get; set; }
         }
         public class Infomation
         {
             public Processor CPU { get; set; }
             public Graphic GPU { get; set; }
             public Ram RAM { get; set; }
-            public Connection Net { get; set; }
+            public InternetSpeed Speed { get; set; }
+            public List<diskDrive> disk { get; set; }
         }
 
         public Home()
@@ -221,49 +235,52 @@ namespace Hardware_Monitor_Lite
         private void timer1_Tick(object sender, EventArgs e)
         {
 
-
+            var ListDisk = new List<diskDrive>();
+            var dataCpu = new Processor();
+            var dataGpu = new Graphic();
+            var dataRam = new Ram();
+            var dataInternetSpeed = new InternetSpeed();
             foreach (var hardware in thisComputer.Hardware)
             {
                 hardware.Update();
                 /*---------------------------------CPU---------------------------------*/
                 if (hardware.HardwareType == HardwareType.Cpu)
                 {
-                    cpuName = hardware.Name;
+                    dataCpu.Name = hardware.Name;
                     foreach (var sensor in hardware.Sensors)
                     {
                         if (sensor.SensorType == SensorType.Load && sensor.Name == "CPU Total")
                         {
-                            cpuLoad = sensor.Value.Value;
+                            dataCpu.Load = Convert.ToInt32(sensor.Value.Value);
                         }
 
                         if (sensor.SensorType == SensorType.Temperature && sensor.Name == "CPU Package")
                         {
-                            cpuTemp = sensor.Value.GetValueOrDefault();
+                            dataCpu.Temp = Convert.ToInt32(sensor.Value.Value);
                         }
                     }
                 }
                 /*---------------------------------GPU---------------------------------*/
                 if (hardware.HardwareType == HardwareType.GpuAmd || hardware.HardwareType == HardwareType.GpuNvidia)
                 {
-                    gpuName = hardware.Name;
+                    dataGpu.Name = hardware.Name;
                     foreach (var sensor in hardware.Sensors)
                     {
                         if (sensor.SensorType == SensorType.Load && sensor.Name == "GPU Core")
                         {
-                            gpuLoad = sensor.Value.Value;
+                            dataGpu.Load = Convert.ToInt32(sensor.Value.Value);
                         }
-
                         if (sensor.SensorType == SensorType.Temperature && sensor.Name == "GPU Core")
                         {
-                            gpuTemp = sensor.Value.GetValueOrDefault();
+                            dataGpu.Temp = Convert.ToInt32(sensor.Value.Value);
                         }
                         if (sensor.SensorType == SensorType.Fan && sensor.Name == "GPU Fan")
                         {
-                            gpuFan = sensor.Value.GetValueOrDefault();
+                            dataGpu.Fan = Convert.ToInt32(sensor.Value.Value);
                         }
                         if (sensor.SensorType == SensorType.Control && sensor.Name == "GPU Fan")
                         {
-                            gpuFanLoad = sensor.Value.GetValueOrDefault();
+                            dataGpu.FanLoad = Convert.ToInt32(sensor.Value.Value);
                         }
 
                     }
@@ -276,16 +293,16 @@ namespace Hardware_Monitor_Lite
                     {
                         if (sensor.SensorType == SensorType.Load && sensor.Name == "Memory")
                         {
-                            ramLoad = sensor.Value.Value;
+                            dataRam.RamLoad = Convert.ToInt32(sensor.Value.Value);
                         }
                         if (sensor.SensorType == SensorType.Data && sensor.Name == "Memory Used")
                         {
-                            ramUse = sensor.Value.GetValueOrDefault();
+                            dataRam.RamUse = Convert.ToInt32(sensor.Value.Value);
                         }
                         if (sensor.SensorType == SensorType.Data && sensor.Name == "Memory Available")
                         {
-                            float ramAva = sensor.Value.GetValueOrDefault();
-                            totalRam = ramAva + ramUse;
+                            int ramAva = Convert.ToInt32(sensor.Value.Value);
+                            dataRam.RamTotal = ramAva + dataRam.RamUse;
                         }
                     }
                 }
@@ -296,66 +313,88 @@ namespace Hardware_Monitor_Lite
                     {
                         if (sensor.SensorType == SensorType.Throughput && sensor.Name == "Upload Speed")
                         {
-                            upload = (sensor.Value.GetValueOrDefault()) * 8 / 1048576;
+                            dataInternetSpeed.UpSpeed = Math.Round(sensor.Value.Value, 1) / 1048576;
                         }
                         if (sensor.SensorType == SensorType.Throughput && sensor.Name == "Download Speed")
                         {
-                            download = (sensor.Value.GetValueOrDefault()) * 8 / 1048576;
-                        }
-                        strNw = Math.Round(download, 2).ToString("F2") + "/" + Math.Round(upload, 2).ToString("F2");
-                        if (strNw.Length > 10)
-                        {
-                            strNw = "Connecting...";
+                            dataInternetSpeed.DownloadSpeed = Math.Round(sensor.Value.Value, 1) / 1048576;
                         }
                     }
                 }
+                /*---------------------------------DISK---------------------------------*/
+                if (hardware.HardwareType == HardwareType.Storage)
+                {
+                    int use = 0, load = 0, temp = 0;
+                    foreach (ISensor sensor in hardware.Sensors)
+                    {
+                        if (sensor.SensorType == SensorType.Load && sensor.Name == "Used Space")
+                        {
+
+                            use = Convert.ToInt32(sensor.Value.GetValueOrDefault());
+                        }
+                        if (sensor.SensorType == SensorType.Load && sensor.Name == "Total Activity")
+                        {
+                            load = Convert.ToInt32(sensor.Value.GetValueOrDefault());
+                        }
+                        if (sensor.SensorType == SensorType.Temperature && sensor.Name == "Temperature")
+                        {
+                            temp = Convert.ToInt32(sensor.Value.GetValueOrDefault());
+                        }
+                    }
+                    var disk = new diskDrive();
+                    disk.Name = hardware.Name;
+                    disk.Use = use;
+                    disk.Load = load;
+                    disk.Temp = temp;
+                    ListDisk.Add(disk);
+                }
                 /*---------------------------------Display---------------------------------*/
-                grCPU.Text = cpuName;
-                txtLoadCPU.Text = Math.Round(cpuLoad).ToString() + " %";
-                txtTempCPU.Text = Math.Round(cpuTemp).ToString() + " °C";
+                grCPU.Text = dataCpu.Name;
+                txtLoadCPU.Text = dataCpu.Load.ToString() + " %";
+                txtTempCPU.Text = dataCpu.Temp.ToString() + " °C";
 
-                grGPU.Text = gpuName;
-                txtLoadGPU.Text = Math.Round(gpuLoad).ToString() + " %";
-                txtTempGPU.Text = Math.Round(gpuTemp).ToString() + " °C";
-                txtFanGPU.Text = Math.Round(gpuFan).ToString() + " RPM";
+                grGPU.Text = dataGpu.Name;
+                txtLoadGPU.Text = dataGpu.Load.ToString() + " %";
+                txtTempGPU.Text = dataGpu.Temp.ToString() + " °C";
+                txtFanGPU.Text = dataGpu.Fan.ToString() + " RPM";
 
-                txtTotalRam.Text = Math.Round(totalRam).ToString() + " GB";
-                txtRamUse.Text = Math.Round(ramUse).ToString() + " GB";
-                txtRamLoad.Text = Math.Round(ramLoad).ToString() + " %";
+                txtTotalRam.Text = dataRam.RamTotal.ToString() + " GB";
+                txtRamUse.Text = dataRam.RamUse.ToString() + " GB";
+                txtRamLoad.Text = dataRam.RamLoad.ToString() + " %";
 
-                txtDown.Text = Math.Round(download, 2).ToString("F2") + " Mbps";
-                txtUp.Text = Math.Round(upload, 2).ToString("F2") + " Mbps";
+                txtDown.Text = dataInternetSpeed.DownloadSpeed.ToString("F1") + " MB/s";
+                txtUp.Text = dataInternetSpeed.UpSpeed.ToString("F1") + " MB/s";
 
                 /*---------------------------------Send DATA---------------------------------*/
 
             }
-            Processor dataCPU = new Processor
-            {
-                Name = cpuName,
-                Load = Math.Round(cpuLoad, 1),
-                Temp = Math.Round(cpuTemp, 1)
-            };
-            Graphic dataGPU = new Graphic
-            {
-                Name = gpuName,
-                Load = Math.Round(gpuLoad, 1),
-                Temp = Math.Round(gpuTemp, 1),
-            };
-            Ram dataRam = new Ram
-            {
-                Use = Math.Round(ramUse).ToString() + "/" + Math.Round(totalRam).ToString()
-            };
-            Connection dataNet = new Connection
-            {
-                Speed = strNw
-            };
+            //Processor dataCPU = new Processor
+            //{
+            //    Name = cpuName,
+            //    Load = Math.Round(cpuLoad, 1),
+            //    Temp = Math.Round(cpuTemp, 1)
+            //};
+            //Graphic dataGPU = new Graphic
+            //{
+            //    Name = gpuName,
+            //    Load = Math.Round(gpuLoad, 1),
+            //    Temp = Math.Round(gpuTemp, 1),
+            //};
+            //Ram dataRam = new Ram
+            //{
+            //    Use = Math.Round(ramUse).ToString() + "/" + Math.Round(totalRam).ToString()
+            //};
+            //Connection dataNet = new Connection
+            //{
+            //    Speed = strNw
+            //};
             Infomation info = new Infomation
             {
-                CPU = dataCPU,
-                GPU = dataGPU,
+                CPU = dataCpu,
+                GPU = dataGpu,
                 RAM = dataRam,
-                Net = dataNet
-
+                Speed = dataInternetSpeed,
+                disk = ListDisk
             };
             string obj = JsonConvert.SerializeObject(info);
             if (lblWIFIStatus.Text == "Connected")
@@ -380,7 +419,7 @@ namespace Hardware_Monitor_Lite
             }
             if (lblStatusWired.Text == "Connected")
             {
-                a = dataCPU.Name + "," + dataCPU.Load + "," + dataCPU.Temp + "," + dataGPU.Name + "," + dataGPU.Load + "," + dataGPU.Temp + "," + dataRam.Use + "," + dataNet.Speed + "*";
+                //a = dataCPU.Name + "," + dataCPU.Load + "," + dataCPU.Temp + "," + dataGPU.Name + "," + dataGPU.Load + "," + dataGPU.Temp + "," + dataRam.Use + "," + dataNet.Speed + "*";
                 serialPort1.Write(a);
                 serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(Data);
             }
@@ -420,10 +459,9 @@ namespace Hardware_Monitor_Lite
         private void button4_Click(object sender, EventArgs e)
         {
             TabPage TabPage = new TabPage { Text = "test" };
-            
+
             // TabControl.TabPages.Add(TabPage);
             // TabControl2.SelectedTab = TabPage;
-            tabControl2.TabPages.Remove(tabPage3);
             tabControl2.TabPages.Add(TabPage);
             tabControl2.SelectedTab = TabPage;
         }
