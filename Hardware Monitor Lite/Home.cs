@@ -364,30 +364,46 @@ namespace Hardware_Monitor_Lite
 
                 txtDown.Text = dataInternetSpeed.DownloadSpeed.ToString("F1") + " MB/s";
                 txtUp.Text = dataInternetSpeed.UpSpeed.ToString("F1") + " MB/s";
-
+                //int i = 1;
+                //foreach(var item in ListDisk)
+                //{
+                //    i++;
+                //    int Index = KiemTraTonTai(tabControl2, item[i].Name);
+                //    if (Index >= 0)
+                //    {
+                //        break;
+                //    }
+                //    else
+                //    {
+                //        TabPage TabPage = new TabPage { Text = item.Name };
+                //        tabControl2.TabPages.Add(TabPage);
+                //      //  tabControl2.SelectedTab = TabPage;
+                //    }
+                //}
+                for(int i = 0; i < ListDisk.Count; i++)
+                {
+                    bool Index = KiemTraTonTai(tabControl2, ListDisk[i].Name);
+                    if (Index)
+                    {
+                       // break;
+                    }
+                    else
+                    {
+                        TabPage TabPageDisk = new TabPage { Text = ListDisk[i].Name };
+                        Label diskName = new Label();
+                        diskName.Width =200;
+                       // diskName.BackColor(Color.Red);
+                        diskName.Text = ListDisk[i].Name;
+                        TabPageDisk.Controls.Add(diskName);
+                        
+                        tabControl2.TabPages.Add(TabPageDisk);
+                        //  tabControl2.SelectedTab = TabPage;
+                        //tabControl2.Dock = DockStyle.;
+                    }
+                }
                 /*---------------------------------Send DATA---------------------------------*/
 
             }
-            //Processor dataCPU = new Processor
-            //{
-            //    Name = cpuName,
-            //    Load = Math.Round(cpuLoad, 1),
-            //    Temp = Math.Round(cpuTemp, 1)
-            //};
-            //Graphic dataGPU = new Graphic
-            //{
-            //    Name = gpuName,
-            //    Load = Math.Round(gpuLoad, 1),
-            //    Temp = Math.Round(gpuTemp, 1),
-            //};
-            //Ram dataRam = new Ram
-            //{
-            //    Use = Math.Round(ramUse).ToString() + "/" + Math.Round(totalRam).ToString()
-            //};
-            //Connection dataNet = new Connection
-            //{
-            //    Speed = strNw
-            //};
             Infomation info = new Infomation
             {
                 CPU = dataCpu,
@@ -458,12 +474,6 @@ namespace Hardware_Monitor_Lite
 
         private void button4_Click(object sender, EventArgs e)
         {
-            TabPage TabPage = new TabPage { Text = "test" };
-
-            // TabControl.TabPages.Add(TabPage);
-            // TabControl2.SelectedTab = TabPage;
-            tabControl2.TabPages.Add(TabPage);
-            tabControl2.SelectedTab = TabPage;
         }
 
         private void btnConnectWIFI_Click(object sender, EventArgs e)
@@ -671,6 +681,19 @@ namespace Hardware_Monitor_Lite
         private void btnReload_Click(object sender, EventArgs e)
         {
             cbbCom.DataSource = SerialPort.GetPortNames();
+        }
+        static bool KiemTraTonTai(TabControl TabControlName, string TabName)
+        {
+            bool temp = false;
+            for (int i = 0; i < TabControlName.TabPages.Count; i++)
+            {
+                if (TabControlName.TabPages[i].Text == TabName)
+                {
+                    temp = true;
+                    break;
+                }
+            }
+            return temp;
         }
     }
 }
