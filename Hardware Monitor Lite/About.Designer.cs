@@ -109,7 +109,7 @@
             // lblVer
             // 
             this.lblVer.Font = new System.Drawing.Font("Segoe UI Historic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVer.Location = new System.Drawing.Point(183, 57);
+            this.lblVer.Location = new System.Drawing.Point(183, 48);
             this.lblVer.Name = "lblVer";
             this.lblVer.Size = new System.Drawing.Size(273, 30);
             this.lblVer.TabIndex = 14;
